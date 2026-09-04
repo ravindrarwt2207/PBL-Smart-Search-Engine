@@ -24,31 +24,6 @@ public:
         cout << "5. Exit\n";
     }
 
-    // Automatic Word Suggestion
-    void suggestion() {
-        string word;
-        bool found = false;
-
-        cout << "\n========== SMART AUTOCOMPLETE ==========\n";
-        cout << "Enter starting word: ";
-        cin >> word;
-
-        cout << "\nSuggestions:\n";
-
-        for (int i = 0; i < documentCount; i++) {
-
-            // Check whether document starts with entered word
-            if (documents[i].substr(0, word.length()) == word) {
-                cout << "- " << documents[i] << endl;
-                found = true;
-            }
-        }
-
-        if (!found) {
-            cout << "No suggestions found.\n";
-        }
-    }
-
     void search() {
         string keyword;
 
@@ -159,4 +134,4 @@ int main() {
     }
 
     return 0;
-}      
+}
