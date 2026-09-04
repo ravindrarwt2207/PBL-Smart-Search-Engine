@@ -1,13 +1,18 @@
 #include <iostream>
-#include <vector>
 #include <string>
 using namespace std;
 
 class SearchEngine {
 private:
-    vector<string> documents;
+    string documents[100];   // Array can store maximum 100 documents
+    int documentCount;
 
 public:
+
+    // Constructor
+    SearchEngine() {
+        documentCount = 0;
+    }
 
     void home() {
         cout << "\n========== HOME ==========\n";
@@ -29,7 +34,7 @@ public:
 
         bool found = false;
 
-        for (int i = 0; i < documents.size(); i++) {
+        for (int i = 0; i < documentCount; i++) {
 
             if (documents[i].find(keyword) != string::npos) {
                 cout << "Result: " << documents[i] << endl;
@@ -45,11 +50,11 @@ public:
     void document() {
         cout << "\n========== DOCUMENT ==========\n";
 
-        if (documents.empty()) {
+        if (documentCount == 0) {
             cout << "No documents available.\n";
         }
         else {
-            for (int i = 0; i < documents.size(); i++) {
+            for (int i = 0; i < documentCount; i++) {
                 cout << i + 1 << ". "
                      << documents[i] << endl;
             }
@@ -60,11 +65,18 @@ public:
         string name;
 
         cout << "\n========== UPLOAD ==========\n";
+
+        if (documentCount >= 100) {
+            cout << "Document storage is full.\n";
+            return;
+        }
+
         cout << "Enter document name: ";
         cin.ignore();
         getline(cin, name);
 
-        documents.push_back(name);
+        documents[documentCount] = name;
+        documentCount++;
 
         cout << "Document uploaded successfully!\n";
     }
@@ -73,7 +85,7 @@ public:
         cout << "\n========== ADMIN DASHBOARD ==========\n";
 
         cout << "Total Documents : "
-             << documents.size() << endl;
+             << documentCount << endl;
 
         cout << "Search Engine    : Active\n";
         cout << "Database         : Connected\n";
@@ -94,10 +106,6 @@ public:
 int main() {
 
     SearchEngine engine;
-
-    // Sample documents
-    engine.upload();
-    engine.upload();
 
     int choice;
 
