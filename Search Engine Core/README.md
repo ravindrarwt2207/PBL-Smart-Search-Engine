@@ -4,7 +4,7 @@ using namespace std;
 
 class SearchEngine {
 private:
-    string documents[100];   // Array can store maximum 100 documents
+    string documents[100];   // Maximum 100 documents
     int documentCount;
 
 public:
@@ -21,8 +21,32 @@ public:
         cout << "2. View Documents\n";
         cout << "3. Upload Document\n";
         cout << "4. Admin Dashboard\n";
-        cout << "5. Automation Status\n";
-        cout << "6. Exit\n";
+        cout << "5. Exit\n";
+    }
+
+    // Automatic Word Suggestion
+    void suggestion() {
+        string word;
+        bool found = false;
+
+        cout << "\n========== SMART AUTOCOMPLETE ==========\n";
+        cout << "Enter starting word: ";
+        cin >> word;
+
+        cout << "\nSuggestions:\n";
+
+        for (int i = 0; i < documentCount; i++) {
+
+            // Check whether document starts with entered word
+            if (documents[i].substr(0, word.length()) == word) {
+                cout << "- " << documents[i] << endl;
+                found = true;
+            }
+        }
+
+        if (!found) {
+            cout << "No suggestions found.\n";
+        }
     }
 
     void search() {
@@ -91,15 +115,6 @@ public:
         cout << "Database         : Connected\n";
         cout << "Users            : 1\n";
     }
-
-    void automationStatus() {
-        cout << "\n========== AUTOMATION STATUS ==========\n";
-
-        cout << "Document Indexing : Running\n";
-        cout << "Search Database   : Online\n";
-        cout << "Automatic Backup  : Active\n";
-        cout << "Web Crawler       : Stopped\n";
-    }
 };
 
 
@@ -135,10 +150,6 @@ int main() {
             break;
 
         case 5:
-            engine.automationStatus();
-            break;
-
-        case 6:
             cout << "\nThank you for using the Search Engine!\n";
             return 0;
 
@@ -148,4 +159,4 @@ int main() {
     }
 
     return 0;
-}
+}      
