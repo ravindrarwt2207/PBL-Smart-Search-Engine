@@ -106,34 +106,43 @@ public:
             cout << "Failed to save document.\n";
         sqlite3_finalize(statement);
     }
-    void viewDatabase() {// Show database documents
-        string sql =
-            "SELECT id, filename FROM documents;";
-        sqlite3_stmt *statement;
-        if (sqlite3_prepare_v2(
-                db,
-                sql.c_str(),
-                -1,
-                &statement,
-                nullptr) != SQLITE_OK) {
-            cout << "Unable to read database.\n";
-            return;
-        }
-        cout << "\n========== DATABASE DOCUMENTS ==========\n";
-        while (sqlite3_step(statement) == SQLITE_ROW) {
-            int id =
-                sqlite3_column_int(statement, 0);
+   void viewDatabase() {
+    string sql =
+        "SELECT id, filename, content FROM documents;";
 
-            const unsigned char *filename =
-                sqlite3_column_text(statement, 1);
+    sqlite3_stmt *statement;
 
-            cout << "ID: " << id
-                 << " | File: "
-                 << filename << endl;
-        }
+    if (sqlite3_prepare_v2(
+            db,
+            sql.c_str(),
+            -1,
+            &statement,
+            nullptr) != SQLITE_OK) {
 
-        sqlite3_finalize(statement);
+        cout << "Unable to read database.\n";
+        return;
     }
+
+    cout << "\n========== DATABASE DOCUMENTS ==========\n";
+
+    while (sqlite3_step(statement) == SQLITE_ROW) {
+
+        int id = sqlite3_column_int(statement, 0);
+
+        const unsigned char *filename =
+            sqlite3_column_text(statement, 1);
+
+        const unsigned char *content =
+            sqlite3_column_text(statement, 2);
+
+        cout << "\nID       : " << id;
+        cout << "\nFilename : " << filename;
+        cout << "\nContent  : " << content;
+        cout << "\n----------------------------------------\n";
+    }
+
+    sqlite3_finalize(statement);
+}
 };
 int main() {// Testing the Automation + Database module
     AutomationDatabase automation;
