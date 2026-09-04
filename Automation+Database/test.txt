@@ -1,0 +1,2003 @@
+Unit 1
+
+Algorithms and Flow-charts. Fundamental of 'C': Basic input/output functions, Tokens and operators. Life of a C program.
+Conditional statements: if statement, if-else statement, nested if, else-if ladder, switch statement.
+Loops: 'for' loops, 'while' loops, 'do while' loops, break and continue, nested loops.
+
+
+
+
+Algorithms:
+• An algorithm is a sequence of steps to solve a particular problem or algorithm is an ordered set of unambiguous steps that produces a result and terminates in a finite time.
+OR
+• Algorithm may be defined as a finite and ordered sequence of steps which when performed leads to the solution of a problem in a definite amount of time.
+
+• A well-defined algorithm always provides an answer and is guaranteed to terminate.
+• Algorithms are mainly used to achieve software re-use.
+
+A good algorithm must have the following characteristics:
+
+• Be precise
+• Be unambiguous
+• Not even a single instruction must be repeated infinitely
+• After the algorithm gets terminated, the desired result must be obtained.
+
+How/Why Algorithms?
+
+Algorithms are usually written in combination of our spoken language and one or more programming languages, in advance of writing a program.
+
+• Independent of Computer Languages
+• Easily converted into Programs
+• Step by Step Process Assists in error correction
+• English and Math like
+
+Algorithms vs. Programs
+Both are sets of instructions on how solve a problem Algorithms
+• In plain language understandable to People
+Programs:
+• Converting Algorithms into Instructions usually in a HLL understandable a computer(compiler).
+
+
+Algorithms Terminology
+
+1. Arithmetic Operators
++ - * / Mod or %
+
+2. Relationship Operators
+> < >= <= = !=
+
+3. Input/output
+• Input, Read, Get, Scan (for taking Input)
+• Output, Write, Show, Display, Print (for displaying result)
+
+4. Constant vs. Variable
+PI <- 3.142 (Constant)
+Area <- PI * Radius * Radius (Variable)
+
+5. Assignment vs. Equality
+? Assignment Operator
+=	Equality (Comparison)
+
+Say A is 10 and B is 20
+A?B	(Assignment operator: used to assign value to a variable) Is (A = B)(Equality operator used to compare two variables)
+
+NOTE: WAA abbreviation for Write an Algorithm
+
+The algorithm and flowchart include following three types of control structures:
+
+1. Sequence: In the sequence structure, statements are placed one after the other and the execution takes place starting from up to down.
+
+2. Branching (Selection): In branch control, there is a condition and according to a condition, a decision of either TRUE or FALSE is achieved. In the case of TRUE, one of the two branches is explored; but in the case of FALSE condition, the other alternative is taken.
+
+3. Loop (Repetition): The Loop or Repetition allows a statement(s) to be executed repeatedly based on certain loop condition e.g. WHILE, FOR loops.
+
+Advantages of algorithm
+
+• It is a stepwise representation of a solution to a given problem, which makes it easy to understand.
+
+• An algorithm uses a definite procedure.
+• It is not dependent on any programming language, so it is easy to understand for anyone even without programming knowledge.
+
+• Every step in an algorithm has its own logical sequence so it is easy to debug.
+How To Write Algorithms:
+
+Step 1: Define your algorithms input Step 2: Define the variables
+Step 3: Outline the algorithm's operations
+Step 4: Output the results of your algorithm's operations
+
+Algorithms based on Sequence:
+Sequence means that each step of the algorithm is executed in the specified order. Q: WAA to find the Sum of Two Numbers
+START
+
+1. a ? 0, b? 0, sum? 0
+2. Read a, b
+3. sum a + b
+4. Write "Sum is: ", sum STOP
+Q: WAA to Exchange Two Numbers using third variable START
+1. a , b, temp
+2. Read a, b
+3. temp? a a? b
+b? temp
+4. Write "After Exchange a is", a
+5. Write "After Exchange b is", b STOP
+
+Algorithms based on Decision Making- Control Flow
+Decision statements are used when the outcome of the process depends on some condition. For example, if x=y, then print "EQUAL". Hence, the general form of the if construct can be given as if condition then process.
+
+1. If statement :
+Syntax or General Format of the IF Construct
+
+IF (CONDITION IS TRUE) THEN
+{
+
+Statement 1
+Statement 2
+
+.......
+Statement N
+}
+
+Q: WAA to ONLY print a message if GUESS number is 100 START
+1. num? 0
+2. Read num
+3. IF (num = 100) THEN
+{
+Print "You have Guessed the lucky Number" Print "Congratulations !!!"
+}
+
+STOP
+
+2. IF-ELSE statement:
+IF - ELSE Construct Syntax:
+
+IF (CONDITION_1 IS TRUE) THEN
+{
+Statement 1
+Statement 2
+.......
+Statement N
+   } ELS E
+{
+Statement A Statement B
+.......
+Statement Z
+}
+
+Q: WAA to find if number is ODD or EVENSTART
+1. num? 0
+2. Read num
+3. IF (num mod 2 = 0) THEN
+{
+Print "Number is Even"
+}
+
+ELSE
+
+
+
+STOP
+
+
+{
+Print "Number is Odd"
+}
+
+Q: WAA to calculate area ONLY of a valid Triangle using Herons Formula.
+
+START
+1. a, b, c, s, area
+2. Read a, b, c
+3. IF ((a + b) > c AND (b + c) > a AND (a + c) > b) THEN
+{
+s (a + b + c)/2
+area ? SQRT(s*(s-a)*(s-b)*(s- c)) Write "Area is:", area
+}
+
+ELSE
+
+
+
+STOP
+
+
+{
+Write"Invalid Triangle"
+}
+
+
+3. IF-ELSEIF-ELSE
+statement: Syntax:
+IF (Condition_A is TRUE) THEN
+{
+SaSb
+.......
+Sn
+}
+ELSE IF (Condition_B is TRUE) THEN
+{ S
+a
+S
+b
+.......
+Sn
+} EL S E
+{ N
+a N
+b
+........
+Nn
+}
+
+Q: WAA to find a number is Positive, Negative or Zero START
+1. num 0
+2. Read num
+3. IF (num = 0) THEN
+{
+Print "Number is ZERO"
+}
+
+ELSE IF (num < 0) THEN
+{
+
+Print "Number is Negative"
+}
+
+ELSE
+{
+Print "Number is Positive"
+} STOP
+
+Algorithms based on Repetition
+Repetition, which involves executing one or more steps for a number of times, can be implemented using constructs such as while, do-while, and for loops. These loops execute one or more steps until some condition is true.
+
+1. while
+loop:
+Syntax:
+WHILE (CONDITION_TRUE) DO I
+a
+I
+b
+
+....
+In
+END-
+WHILE
+
+Q: WAA to display Numbers from 1 to N START
+1. num 1, N
+2. Get N // Last Number
+3. WHILE (num <= N) DO
+Print	num " " num num
++	1	END- WHILE
+STOP
+
+2. Repeat...for Count
+Syntax of the Repeat...for Count
+
+// Count Up
+
+REPEAT for count 1, 2, 3,...N
+{
+S
+a S
+b
+...
+Sn
+}
+OR
+// Count Down
+REPEAT for count N, N-1, N-2,...0
+{
+S
+a S
+b
+...
+Sn
+}
+
+Q: WAA to find the sum of the series 1 + 3 + 5 + 7 + 9... N for the first 30 terms START
+1. num 1, sum 0
+2. REPEAT for count 1, 2, 3...30
+{
+sum sum + num num num + 2
+}
+3. Write "Sum of 30 terms is:", sum STOP
+
+Q: WAA to determine if an input number is a perfect number. Ex: 6, 28 START
+1. num, i 0 , fact_sum 0
+2. READ num
+3. WHILE (i <= num /2) DO
+IF (num mod i = 0) THEN fact_sum fact_sum + i END-IF i i + 1
+END-WHILE
+
+4. IF (fact_sum = num) THEN WRITE num, "is perfect" ELSE
+WRITE num, "is NOT perfect" END-IF
+STOP
+
+
+
+Q: WAA to generate the Fibonacci Series 0,1,1,2,3,5,8..N. For N >= 1 START
+1. first 0, second 1,next 1, N
+2. READ N
+3. WRITE first, second
+4. WHILE (next <= N) DO WRITE
+next	first second second next next first + second END-
+WHILE STOP
+Flowcharts
+• "Flowchart is diagrammatic /graphical representation of sequence of steps to solve a problem."
+Flowchart is a graphical or symbolic representation of a process.
+• It is basically used to design and document virtually complex processes to help the viewers to visualize the logic of the process, so that they can gain a better understanding of the process.
+• When designing a flowchart, each step in the process is depicted by a different symbol and is associated with a short description. The symbols in the flowchart are linked together with arrows to show the flow of logic in the process
+
+Advantages of flowchart:
+• Flowchart is an excellent way of communicating the logic of a program.
+• Easy and efficient to analyze problem using flowchart.
+• During program development cycle, the flowchart plays the role of a blueprint, which makes program development process easier.
+• After successful development of a program, it needs continuous timely maintenance during the course of its operation. The flowchart makes program or system maintenance easier.
+• It is easy to convert the flowchart into any programming language code.
+
+To draw a flowchart following standard symbols are use: -
+
+
+
+
+
+Q: Draw a flowchart to add two numbers
+
+
+
+Q: Draw a flowchart to find area of a circle.
+
+
+
+
+
+Q: Draw a flowchart to swap two numbers.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Q. Draw a flowchart to print numbers from 1 to 100.
+
+
+
+
+
+Why Program Computers?
+• Computer is a machine. It depends on Instructions to accomplish something.
+• Correct Instructions results expected output.
+• Series of meaningful instructions is a program.
+• People who write these instructions are known as programmers.
+• Cooking dish certain steps are followed. Particular order, quantity etc. Same in computer programming Wrong instruction, did not give the desired result.
+• On RUNNING/EXECUTING a computer program we get desired output
+• You need a COMPILER to run a program on a computer. It makes a program understandable to a computer. Since Computer can understand only 0sand 1s
+• COMPILATION or BUILD is the process of making a program executable ona computer
+• Program written in high level language called a SOURCE CODE.
+• Compiler transforms to MACHINE CODE
+• We shall use Code::Blocks/Online GDB/Dev C++ Compiler for typing, editing, debugging and executing a program.
+
+Terminology
+• 	Integrated development environment (IDE) seethe program output in one placewith an IDE . Example:Code::blocks, Eclipse, Visual Studio
+• Editor
+• Compilation
+• Debugging: Removing them called debugging.
+• Errors in code called Bugs.
+
+Introduction
+We all program our lives in some way. Computer Program is a list of Instructions
+
+Example Program: ISBT (Inter State Bus Terminus) to Graphic Era Univesity, Dehradun
+• Head west on NH 7 toward ISBT Circle
+• At ISBT Circle, take the 1st exit ontoNH307 2 Kms
+• Turn left onto Post Office Rd 1 Kms
+• Turn right onto Bell Road 200 Metres
+• Make a left towards Graphic Era University
+
+Let us say your parents give you one thousand rupees per month towards your expenses. Assume you hobby is listening to music and you purchase them from a website selling songs. Let us say the cost of a song is 12 rupees. Now you want to write a simple program to tell you the total cost for say N number of songs you download from the site. If you had to write the steps they would be...
+
+Enter "Number of songs you would like to download today?" N Enter "the cost per song:" 12
+Multiply the Number of songs with cost per song: N x 12Show the final cost: Rs. 	
+
+• This sequence of instructions is a program.
+• Now computer programs are similar but have a SYNTAX and written in some programming language.
+• Computer languages may specify that end of each statement be followed by a special character like say ; in C
+• Failure to use the terminating ; leads to syntax error message
+• Every language has its unique syntax
+• Logic is known as SEMANTICS
+
+
+// C Program
+#include
+<stdio.h> int main ()
+{
+int N_Songs ;
+float Song_Cost = 12, Final_Price; printf("Enter Number of Songs \n"); scanf("%d", &N_Songs);
+Final_Price = N_Songs * Song_Cost; printf("Cost of Songs is %0.2f
+\n",Final_Price); return 0;
+}
+
+
+Key parts of a program
+• Variables and Constant
+• Name and types of values
+• Variables vary and contain value(s)
+• Names for Memory location
+• Operators = *
+• Data type Character and Non-Character
+• Must Declare memory locations to be reserved
+
+Why Learn C Programming Language?
+
+• Close to 50 years still widely used
+• Language that is the basis for most modern languages
+• Understand the working of a computer system
+• Extensive	applications.	For	example, compilers, operating systems embedded applications to name a few.
+• Major portions of OS like Windows, Linux, UNIX still in C. Integration with new devices through device drivers in C.
+• Embedded world mobile phones, washing machines, digital cars, cameras, IoT applications use C.
+• Games also due to speed and quick response
+• Few languages can interact with hardware like C
+• Lean, Mean and efficient
+
+Features of C language:
+• Structured
+• High Level/Middle Level
+• Robust
+• Portable
+• Extensible
+• Supports pointers
+
+Structured:
+C is structured procedure- oriented language, it divides the problem into smaller modules called functions or procedures.
+
+High Level/Middle Level:
+Programs written in C must be translated by the Compiler (system software) into machine- level language. While in middle level languages programmers can write a code that can be translated by the assemblers into machine code, which helps the programmers to interact directly with the hardware.
+
+Portable:
+C is portable that is code written on one machine can be easily ported or executed on other machines as long as that machine supports the same C compiler.
+
+Robust:
+C is robust language that is programs written in C do not crash so easily. It recovers quickly whenever programs result into an erroneous condition.
+
+Extensible:
+C is extensible language that allows new features and modifications to be made to the existing programs written in C.
+
+Supports pointers:
+C supports the use of pointers that allow the programmers to manipulate the memory directly.
+
+
+Journey of C Language
+
+1. In 1972 Dennis Ritchie worked on improvement of a language called B by Ken Thompson which in turn was derived from BCPL by Martin Richards.
+2. The result was the C programming language.
+3. Version 4 of Unix Kernel major portions were coded in C
+4. First language is used for writing an OS rather than a assembly language
+5. Language became popular
+6. In 1978, K&R released the first specification via book The C programming language
+7. To address standardization 1983 ANSI committee formed
+8. ANSI released standard document in1989
+9. Adopted by ISO in 1990
+10. C89 or C90 refer to same standard
+11. ISO C99 inline functions, one-line comments, variable length arrays
+12. C11 and C18
+13. The only way to learn a programming language is by writing programs in it.
+
+14. Comments in C Code
+// C hello world example	//Single line comment
+/*
+Graphic Era University B.Tech 1st sem	//multi line comment
+*/
+
+#include
+<stdio.h> int main()
+{
+printf("Welcome to C Programming\n"); return 0;
+}
+
+1. Can be placed anywhere in a program.
+2. Clarity and explanation to others/self later on.
+3. Only Part of the Source File Not the executable.
+4. Cannot Nest Multiline Comments.
+5. Avoid Trivial Comments Ex: int i
+6. May use comments to describe the logic in Pseudo code
+7. Program code change history can be maintained at the top of each program
+8. Code testing frequently comments out code.
+
+// C hello world example
+
+#include
+<stdio.h> int main()
+{
+printf("Welcome to C Programming\n"); return 0;
+}
+
+Library:
+
+1. Originally C library was considered as part of the UNIX operating system
+2. Users provided facilities for I/O, memory management etc
+3. User Community implementations were shared
+4. Incorporated as a part of standard C
+5. Libraries in ANSI C
+6. Declaration is in header files but actual code is in library files
+7. C lacks built-in capability to do tasks like memory management, I/O, manipulation ofdata etc
+8. Arrangement in the form of a standard library exists
+9. Compile your code and link them for usage
+10. Functions are specified as a part of the standard ISO C
+11. Small Library set of functions compared to other languages
+12. Developed and thoroughly tested,
+13. Optimised and error free
+14. Time saving
+15. Consistency of behaviour across operating platforms
+16. Header file contains function declarations, data type definitions, and macros
+17. As of now 29 Header files per C11
+
+Preprocessor Directives (#include)
+
+#include <C_HeaderFile.H>
+
+Example
+#include <stdio.h> OR #include "U_HeaderFile.H"
+
+Example
+#include "projects.h"
+
+• <C_HeaderFile.H> Search for header file in the standard system directories (Can show a snapshot of standard system directories on Windows with Code::Blocks compiler)
+
+• "U_HeaderFile.H" Searches in the location where your source file exists followed by the standard directories
+
+C|D:\Code Blocks\MinGW\include
+Eg: stdio.h, math.h
+
+• 	Contents of the header file are included at that point in the source code. Think of itas a copy paste into the source file
+• Step is prior to compilation. Not apart of the C Compiler. That is why no ;
+• Files shared across programs
+• One header file Per Line
+• Function prototype declarations (No code is present), Global variables, Constants
+• No Code after # line
+• Software Program as the name indicates does pre-processing prior to the actualcompilation of the program in a high level language.
+• Includes header file <stdio.h>
+• Removes any comments in the source program
+
+
+Macros Substitution
+
+They are abbreviations of C code. They are substituted for all occurrences in your source file. Example : #define PI 3.142
+Ex:
+#include <stdio.h> #define STRING "Hello World" int main(void)
+{
+/* Using a macro to print "HelloWorld"
+*/ printf(STRING); return 0;
+}
+
+Journey of a C Program from (Source Code to Executable)
+
+• Create a file in code:blocks IDE and save the file with an extension .c For example: hello.c
+• File is passed onto a software program called pre- processor. File after preprocessing becomes hello.i
+• The file is taken in by the compiler and converted to a assembly file called hello.s
+• The assembler converts the file into hello.o (object code)
+• Some calls like say printf code not yet part of the program. These references need tobe resolved. Library object code is stored in .a or .lib files.
+• A software program called the linker resolves these references (linking the code)
+• Output of the linker is .exe on windows and a.out on Linux platforms. The executableimage is stored on the secondary storage device.
+• Loader takes the image and loads into RAM. Intimates to the CPU starting address of
+
+the code.
+
+Life cycle of a C program
+
+
+
+
+Source Program:
+Any C file say P1.C program is edited and given to a C compiler. Figure above shows the different phases of execution of C program.
+
+Pre-Processing:
+This is the first phase through which source code is passed. In this phase any statements defined in this section (before the main() function) are processed, if used in the program.
+This phase includes:
+Removal of Comments Expansion of Macros Expansion of the included files. Conditional compilation
+For ex. printf and scanf statements, if used in the program, will have been checked with their definitions stored in the header file <stdio.h>.
+
+Compile:
+The next step is to compile and produce an; intermediate file that contains assembly level instructions P1.s.
+During this phase the compiler checks for the syntax errors such as declaration of variables, initialization if any, the correct syntax of the C program etc. If any errors are encountered then they get displayed with corresponding line numbers.
+The assembler converts the P1.s file after correction and successful compilation of the program to an object file P1.o.
+
+Linking:
+This is the final phase in which all the linking of function calls with their definitions are done. Linker knows where all these functions are implemented. Linker does some extra work also, it adds some extra code to our program which is required when the program starts and ends.
+Linking produces the executable file P1.exe (a.out by default on Linux/Unix machines), which is the machine code (binary code) which will be actually executed by the processor.
+
+Loader:
+Loader takes the image (P1.exe) generated and loads it into RAM and informs the CPU the starting address of the code for execution (running of the program).
+
+
+BASIC CONCEPTS OF A C PROGRAM
+
+The structure of a C program is shown
+below: int main()
+{
+declaration section;
+
+statement-1	//	Executable
+section startsstatement-2
+statement-3
+statement-4 // Executable section ends return 1;
+}
+
+User defined function-definition(s) is optional
+
+Documentation Section
+
+This section allows to document by adding Comments to the program. Comments are portions of the code ignored by the compiler. The comments allow the user to make simple notes in the source code.
+
+For ex. // this is an example for single line comment
+/* this is an example for multiple line comment */
+
+Preprocessor Directives
+
+• The preprocessor accepts the source program and prepare the source program for compilation.
+• The preprocessor-statements start with symbol #.
+• The normal preprocessor used in all programs is include.
+• The #include directive instructs the preprocessor to include the specified file- contents in the beginning of the program.
+• For ex:
+#include<stdio.h>
+main()
+Global declaration section
+
+• If user wishes to declare any variable outside the main program which needs to be accessed by any part of the program then he may declare it in this section just before main function.
+• Every C program should have a function called as main() and is an entry point to the program (a gateway to the program) that is always executed.
+• The statements enclosed within left and right curly brace is called body of the function. The main() function is divided into 2parts:
+
+Declaration Section
+• The variables that are used within the function main() should be declared in the declaration-section only.
+• The variables declared inside a function are called local variables. The compiler allocates the memory for these variables based on their types for ex. if the variable is an integer, then it allocates 4 Bytes, if it's of char type then 1-Byte and so on. Ex: int p, t,r;
+
+Executable Section
+• This contains the instructions given to the computer to perform a specific task.
+• The task may be to:
+? display a message
+? read data or
+? do some task ex. add two numbers etc.
+
+Example: Program to display a message on the screen.
+
+#include<stdio. h> int main()
+{
+printf("Welcome to C"); return 1;
+}
+Output:
+Welcome to C
+
+DATA INPUT/OUTPUT FUNCTIONS
+• There are many library functions for input and output operations in C language.
+• For ex: getch( ), putchar( ), scanf( ), printf( )
+• For using these functions in a C-program there should be preprocessor statement #include<stdio.h> in the beginning of the program before the declaration of main function.
+
+Input Function
+• The input functions are used to read the data from the keyboard and storein memory-location.
+• For ex:
+scanf(), getchar(), getch(), getche(), gets()
+
+scanf()
+
+Reads values into built-in data types
+Syntax: scanf("Format specifier",&var_name);
+
+• Reads data obeying the format specified into a memory address
+• scanf(" format string ", &v1,&v2..&vn);
+• Format string shall be conversion specifiers without spaces or other characters
+• Followed by the location (address) of memory locations.
+• & known as reference operator
+• Number and type of format specifiers is programmers' responsibility
+• Forgetting & can lead to program crash or unexpected behavior.
+• Ignore spaces, newlines, tabs while reading input.
+
+#include
+<stdio.h> int main()
+{
+int a;
+printf("Enter integer number:"); scanf("%d", &a );
+printf("a is = %d\n", a); return 0 ;
+}
+Enter Integer Number: 55 a is = 55
+
+Output Functions
+The output functions are used to receive the data from memory- locations through the variables and display on the monitor.
+Forex:
+printf(), putchar(), putch(), puts() Types of I/O Functions:
+
+
+printf() (Most common Output Function)
+• scanf and printf very widely used C functions #include
+<stdio.h
+> int main ()
+{
+int i = 10 ; float j
+= 100;
+printf("Value of i = %d and j = %f
+\n", i, j); return 0;
+}
+Value of i = 10 and j = 100.000000
+• Used for printing values of built-in datatypes
+• C has no idea about what you are printing. So....
+• Need to inform C, how to make sense of the data
+
+printf( " format string ", expr1, expr2,expr3...exprn);
+• format strings i n f o r m C how the values are to be interpreted. It contains conversion specifiers and text
+• Conversion specifiers begin with %
+
+• Expressions may contain constants, variables or a combination evaluating to a built- indata type
+• At the point of conversion specifiers values are substituted during printing
+• Conversion specifiers specify the format of display
+• For example %d indicates decimal integer
+• Ordinary characters enclosed within ""are printed as is.
+• No checking of number of format specifiers and expressions
+• C does not perform any type checks in the printf( ) function call
+• Programmer job to make sure that the data type of the variables MATCH and CORRESPOND to formatting character
+• Programmers responsibility to specify correct specifier and data type
+• Otherwise garbage results are printed
+
+ILLUSTRATION
+printf("Value of i = %f and j = %d \n", i,j);// Garbage Output printf("Value of i = %d and j = %f \n", i);// i = 100, meaningless output
+
+• There are 2 types of I/O Functions as shown below:
+
+
+
+Character Set
+Character-set refers to the set of alphabets, letters and some special characters that are valid in C language.
+• Alphabets
+• Digits
+• White Spaces Tab Or New line Or Space
+• Special Characters
+1. ALPHABETS
+Uppercase letters A-Z Lowercase letters a-z
+2. DIGITS
+0, 1, 2, 3, 4, 5, 6, 7, 8, 9
+3. Special Characters
+~ Tilde
+! Exclamation mark # Number sign
+$ Dollar sign
+% Percent sign
+^ Caret
+& Ampersand
+      * Asterisk ( Left parenthesis) Right parenthesis
+_ Underscore Special Characters Symbol Meaning
++ Plus sign
+| Vertical bar
+\ Backslash
+` Apostroph e - Minus sign
+= Equal to sign
+{ Left brace
+} Right brace [ Left bracket
+] Right bracket
+: Colon
+" Quotation mark
+; Semicolon
+< Opening angle bracket
+
+> Closing angle bracket
+? Question mark
+, Comma
+. Period
+/ Slash
+
+Execution Character Set (Escape Sequence)
+
+These are unprintable, which means they are not displayed on the screen or printer. Those characters perform other functions. Examples are backspacing, moving to a newline, or ringing a bell. Each one of character constants represents one character, although they consist of two characters. These character combinations are called escape sequence.
+• An escape sequence character begins with a backslash and is followed byone character.
+• A backslash (\) along with some characters give rise to special print effectsby changing (escaping) the meaning of some characters.
+• The complete set of escape sequences are:
+
+
+CharacterASCII valueEscape SequenceNull000\0Null characterAlarm (bell)007\aBeep SoundBack space008\bMoves previous positionHorizontal tab009\tMoves next horizontal tabNew line010\nMoves next LineVertical tab011\vMoves next vertical tabForm feed012\fMoves initial position ofnext pageCarriage return013\rMoves beginning of the lineDouble quote034\"Present Double quotesSingle quote039\'Present ApostropheQuestion mark063\?Present Question MarkBack slash092\\Present back slashOctal number\00Hexadecimal number\x
+Tokens
+• A token is the smallest element of a C program.
+• One or more characters are grouped in sequence to form meaningful words.
+• These meaningful words are called tokens.
+• The tokens are broadly classified as follows
+o Keywords ex: if, for, while ,int, float, char
+o Identifiers ex: sum, length
+o Constants ex: 10, 10.5, 'a', "sri"
+o Operators ex: + - * /
+o Special symbols ex: [], (), {}
+
+
+
+
+
+
+
+
+Sample C Code Tokens int main ( )
+{
+const float PI =
+3.142 ; int a = 0 ; a = a + 10 ;
+printf( "hello world \n" )
+; return 0 ;
+}
+Keywords: int, const, float Operators: = , +
+Identifiers: a, printf, main, PI Constants: 3.142
+Strings: "hello world \n"
+
+Special Characters: { } ()
+
+
+Keywords
+• Keywords are tokens which are reserved by C for a definite purpose.
+• Each keyword has fixed meaning and that cannot be changed by the user.
+• C supports about 32keywords. Rules for using keywords
+• Keywords cannot be used as a variable or function.
+• All keywords should be written in lower letters.
+• Following keywords are listed below:
+
+
+breakcaseCharconstcontinuedefaultdoubleelseFloatforifintregisterreturnshortsignedsizeofstructswitchtypedefunsignedvoidwhiledolongautostaticregisterenumreturnexternunion
+Identifier
+• Identifier is used to represent various part of a program such as variables, constants, functions etc.
+• An identifier is a word consisting of sequence of
+? Letters
+? Digits or"_"(underscore)
+• For ex:
+Average, Percent, total100
+
+Few Valid Identifiers
+Ex. Length, _breadth, area51, Num5_sol, _percent_ etc.
+
+Few Invalid Identifiers
+Ex. 10Average, -Sum, Sol?ution, Div/quot etc.
+
+Rules for an Identifier
+• Can start with a letter or underscore
+• Can't start with a digit or special symbol or operator
+• Can't contain special symbol or operator
+• Can't be a keyword
+
+Constants
+• A constant is an identifier whose value remains fixed throughout the execution of the program.
+
+• The constants cannot be modified in the program.
+• For example:
+1, 3.14512 , 'z',"pcdnotes"
+
+Different types of constants are:
+1. Integer Constant:
+• An integer is a whole number without any fraction part.
+• There are 3 types of integer constants:
+i) Integer & Decimal constants (0 1 2 3 4 5 6 7 89) Integer Constants
+For ex: 0, -9, 22
+ii) Octal constants (0 1 2 3 4 5 67)
+For ex: 021, 077, 033
+iii) Hexadecimal constants (0 1 2 3 4 5 6 7 8 9 A B C D EF) For ex: 0x7f, 0x2a, 0x521
+
+2. Floating Point Constant
+• The floating-point constant is a real number.
+• The floating-point constants can be represented using 2forms:
+
+i) Fractional Form
+• A floating-point number represented using fractional form has an integer part followed by a dot and a fractional part.
+• Forex:
+0.5, -0.99
+
+ii) Scientific Notation (Exponent Form)
+• The floating- p o i n t number represented using scientific notation has three parts namely:
+mantissa E exponent
+
+• For ex:
+9.86E3 imply 9.86*103
+
+3. Character Constant
+• A symbol enclosed within a pair of single quotes (') is called a character constant.
+• Each character is associated with a unique value called an ASCII (American Standard Code for Information Interchange) code.
+Forex:	'9', 'a','\n'
+4. String Constant
+• A sequence of characters enclosed within a pair of double quotes (") is called a string constant.
+• The string always ends with NULL character (denoted by \0) character.
+• Forex:
+"9" "a" "sri" "\n"
+
+Data in Programming
+
+• Data is collection of raw facts
+• Data can be numbers, characters, images, sound
+• Programs transform data into meaningful information
+• Primarily focus on Integers, Characters and Real Numbers (floating point)
+• Ex: Roll Number Integer
+• Numbers without decimal place are called integers.
+• Example: 9, -8, 1008, -4995
+Data Types in C
+
+• The data type defines the type of data stored in a variable and hence in the memory- location.
+Three basic data types in C: int, float and char
+
+• C supports three classes of datatypes:
+a. Primary datatype
+   for ex: int, float, char and void b.Derived datatypes
+For ex: array
+c.User defined datatypes For ex: structure
+
+Primary data types in C:
+1. int
+• An int is a keyword, used to define integers.
+• Using int keyword, the programmer can inform the compiler that the data associated with this keyword should be treated as integer.
+• C supports 3 different sizes of integer:
+o Short int
+o int
+o long int
+2. float
+• A float is a keyword which is used to define floating point numbers.
+• Compiler allocates 4 bytes of memory.
+• C supports 3 different sizes of float:
+o float
+o double
+o long double
+• compiler allocates 8 bytes of memory to the data type double, while 16 bytes to long double.
+3. char
+• A char is a keyword which allows defining and store a single character.
+• Compiler allocates 1 byte of memory.
+4. void
+• void is an empty data type indicates that no value is associated with this data type, and it does not occupy any space in memory.
+• Generally used with functions to indicate that the function does not return any value.
+
+Range and Size of data types for 32-bit and 64-bit processor
+
+
+
+
+
+Let n be the number of bits, Unsigned range: 0 to (2^n - 1)
+Signed range: -2^(n-1) to (2^(n-1) - 1) In signed numbers, 1 bit is used for sign. Size Formula
+Number of bits = Number of bytes × 8 1 byte = 8 bits
+
+Common Sizes
+
+
+32-bit system64-bit systemchar = 1 bytechar = 1 byteshort = 2 bytesshort = 2 bytesint = 4 bytesint = 4 bytes
+long = 4 byteslong = 8 byteslong long = 8 byteslong long = 8 bytes
+
+
+
+
+
+
+
+Usually only long changes in 64-bit system.
+
+Example
+Signed int (4 bytes):
+4 × 8 = 32 bits
+Range = -2^31 to (2^31 - 1)
+
+We can calculate these ranges and sizes using above formulae
+
+
+Qualifiers
+• Qualifiers alter the meaning of primary data types to yield a new data type.
+Size Qualifiers
+• Size qualifiers alter the size of primary datatype.
+
+long int i;	//The size of int is 4 bytes in 32- and 64-bit processors but, when long
+//keyword is used, variable will be of 8 bytes
+short int i;	//The size of int is 2 bytes.
+To get to know about the size of the datatype, use sizeof operator. #include <stdio.h>
+int main() {
+printf("The size of int data type: %d bytes\n", sizeof(int)); printf("The size of char data type: %d bytes\n", sizeof(char)); printf("The size of float data type: %d bytes\n", sizeof(float)); printf("The size of double data type: %d bytes\n", sizeof(double));
+printf("The size of long double data type: %d bytes\n", sizeof(long double)); return 0;
+}
+
+Sign Qualifiers
+• Whether a variable can hold positive value, negative value or both values is specified by sign qualifiers.
+
+• Keywords signed and unsigned are used for sign qualifiers.
+unsigned int a;//unsigned variable can hold zero &
+// positive values only
+Signed int b;	//signed variable can hold zero, positive
+//and negative values
+
+Constant Qualifiers
+• Constant qualifiers can be declared with keyword const.
+• An identifier declared by using a const keyword cannot be modified.
+const int p=20; //the value of p cannot be changed in the
+//program.
+
+Variables
+
+• A variable is an identifier whose value can be changed during execution of the program. Variable is a name given to a memory-location where the data(value) can be stored.
+
+• Using the variable-name, the data can be
+? stored in a memory-location and
+? accessed or manipulated
+
+Variable Declarations:
+//Showing some variable declarations #include<stdio.h>
+#define LOWER 0 int main ()
+{
+int a; float b; char c;
+}
+/*Ritchie's advice: Declare each variable type on a separate line */
+
+• Choose variable names that are related to the purpose of the variable, and that are unlikely to get mixed up typographically.
+• Use short names for local variables, especially loop indices, and longer names for external variables.
+Rules for defining a variable
+1) The first character in the variable should be a letter or an underscore.
+2) The first character can be followed by letters or digits or underscore.
+3) No special symbols are allowed (other than letters, digits and underscore).
+4) Length of a variable can be up to a maximum of 31characters.
+5) Keywords should not be used as variable-names.
+
+• Valid variables:
+area, rate_of_interest, _temperature_, celcius25
+
+• Invalid variables:
+3fact, ?sum, sum-of-digits, length62$, for, int, if
+
+Declaration of Variable
+The declaration tells the complier:
+• what is the name of the variable used
+• what type of data is held by the variable
+
+The syntax is shown below:
+data_type variable1, variable2, variable3;
+
+where variable1, variable2, variable3 are variable-names of data_type that could be int, float or char type.
+
+• For ex:
+int a, b, c; float x, y, z;
+
+Initialization of Variable
+
+• The variables are not initialized when they are declared. Hence, variables normally contain garbage values and hence they have to be initialized with valid data.
+
+int	xyz	=	10;
+data_type	variable_name
+
+assignment operator	data
+
+float pi=3.1416;
+char c='z';
+
+OPERATOR
+• An operator can be any symbol like + - * / that specifies what operation need tobe performed on the data.
+• Forex:
++ indicates add operation
+* indicates multiplication operation Operand
+
+• An operand can be a constant or a variable.
+
+
+
+Expression
+An expression is combination of operands and operator that reduces to a single value.
+For ex:
+Consider the following expression a+b here a and b are operands while + is an operator
+
+Operator Table with Precedence and Associativity:
+• The order in which different operators are used to evaluate in an expression is called precedence of operators.
+PRECEDENCE TABLE
+
+
+RankOperatorAssociativityRankOperatorAssociativi
+ty1( )
+[ ]
+
+.
+
+++ --Left to Right9^ (Bitwise
+XOR)Left to right2decrement)
+~  (one's
+compleme nt)
+*
+(indire ction
+OrRight to left10| (Bitwise OR)Left to Right
+dereference
+) & (Address of)
+!	(Logical Not) (type) type cast
+- sizeof3* / % (Modulus
+)Left to Right11&&Left to Right4+ -  (Binary
+Addition or
+Subtraction)Left to Right12||Left to Right5<<	>>Left to Right13?:
+    (Terna ry operator)Right to left6< >=
+< <=Left to Right14=
++=
+-=
+*=
+/=
+>>= etc.Right to left7== !=Left to Right15,Left to Right8& (Bitwise
+AND)Left to Right
+Illustrations: x = -2 + 11 - 7 * 9 % 6 / 12
+
+CLASSIFICATION OF OPERATORS
+Operator Name	For Example
+Arithmetic operators	+ - * / %
+Increment/decrement operators	++	--
+Assignment operators	=
+Relational operators	<>== Logical operators		&&
+||~
+Conditional operator	?:
+Bitwise operators	& |^
+Comma operator	,
+Special operators	[], sizeof,
+
+
+
+
+ARITHMETIC OPERATORS
+• These	operators	are	used	to	perform	arithmetic	operations such asaddition, subtraction, division, multiplication, modulus.
+There are 5 arithmetic operators:
+Operator	Meaning of Operator
++	addition
+-	subtraction
+*	multiplication
+/	division
+%	modulos
+• Division symbol(/)
+? divides the first operand by second operand and
+? returns the quotient.
+
+Quotient is the result obtained after division operation.
+• Modulus symbol (%)
+? divides the first operand by second operand and
+? returns the remainder.
+Remainder is the result obtained after modulus operation.
+• To perform modulus operation, both operands must be integers.
+• Program to demonstrate the working of arithmetic operators.
+#include<stdio.h> int main()
+{
+int a=11,b=4,c; c=a+b; printf("a+b=%d \n", c); c=a-b;
+printf("a-b=%d\n",c); c=a*b; printf("a*b=%d\n",c); c=a/b;
+printf("a/b=%d \n", c); c=a%b; printf("Remainder when a is divided by b=%d ", c); return 1;
+}
+Output:
+a+b=1 5 a- b=7 a*b=4 4
+a/b=2
+a%b=3 Remainder when a is divided by b= 3
+
+
+Integer vs Float Arithmetic
+int a=20,b=6,result;
+
+
+result=a/b;//3result=a%b;//2
+Float result; result=10 /3; // 3.00 result=10/3;	//
+3.333333
+
+NOTE
+:	a)	Unary+, -have highest precedence, next are*,/,%,operators and last are binary+,
+-operators and the associativity of all arithmetic operators is left to right.
+b)	Mod works only on Integer type data
+
+
+INCREMENT OPERATOR
+• ++ is an increment operator.
+• As the name indicates, increment means increase, i.e. this operator is used toincrease the value of a variable by1.
+• For example:
+If b=5
+then b++ or ++b; // b becomes 6
+• The increment operator is classified into 2categories:
+1) Post increment Ex: b++
+2) Pre increment Ex: ++b
+
+• As the name indicates, post-increment means first uses the value of variable and then increases the value of variable by1.
+• As the name indicates, pre-increment means first increases the value of variable by 1 and then uses the updated value of the variable.
+• Forex:
+If x= 10,
+then z= x++; assigns the value 10 to z & then increments value of x but z = ++x; assigns the value 11 to z
+Example: Program to illustrate the use of increment operators. #include<stdio.h>
+int main ()
+{
+int x=10, y = 10, z; z= x++;
+printf(" z=%d x= %d\n", z, x);
+z = ++y+x;
+
+printf(" z=%d y= %d", z, y++); return 1;
+}
+
+Output: z=10
+      x=1 1 z=22 y=11
+
+
+DECREMENT OPERATOR
+• -- is a decrement operator.
+• As the name indicates, decrement means decrease, i.e. this operator is used todecrease the value of a variable by1.
+• For example:
+If b=5
+then b-- or --b; // b becomes 4
+
+• Similar to increment operator, the decrement operator is classified into two categories:
+i) Post decrement Ex:b--
+ii) Pre decrement Ex:--b
+
+• Forex:
+If x=10,
+Then z=x--;	// z becomes 10, but z = --x; // z becomes 9
+Example: Program to illustrate the use of decrement operators. int main()
+{
+int x=10,y = 10, z ; z= x--;
+printf(" z=%d x= %d\n", z, x);
+z = --y;
+printf(" z=%d y= %d", z, y);
+}
+Output: z=10 x=9
+z=9 y=9
+
+TYPE CONVERSION
+• Type conversion is used to convert data of one type to data of another type.
+• Type conversion is of 2 types as shown in below figure:
+
+
+Implicit Type Conversion
+• If a compiler converts one type of data into another type of data automatically, it is known as implicit conversion.
+• There may be data loss whenever in implicit conversion takes place i.e while converting from float to int the fractional part will be truncated, double to float causes rounding of digit and long to int causes dropping of excess higher order bits.
+• The conversion always takes place from lower rank to higher rank.
+int main()//	Implicit	Conversion
+{
+int age=2;
+char gender ='A';
+//ASCII65
+age=age*gender; printf("%d\n", age); //130
+}	//Lower to a WIDER Type
+
+Any implicit type conversions are made by converting the lower type to higher type as shown below:
+
+
+
+
+
+For ex, int to float as shown in the above datatype hierarchy.
+• For ex:
+int	a	=	22; float b=11;
+float c = a/b; =0.500000
+Rules (Promote lower to wider type):
+• _Bool to character
+• character to short int
+• short to int
+• signed to unsigned int
+• unsigned int to long int
+• long to unsigned long int
+• unsigned long int to long long
+• long long to float
+• float to double
+Type Casting (Explicit Data Type Conversion)
+• When the data of one type is converted explicitly to another type with the help of some pre- defined types, it is called explicit conversion.
+• The	syntax	is	shown below:
+data_type1 v1;
+
+data_type2 v2= (data_type2) v1;
+where v1 can be expression or operand or value
+
+#include<stdio.h> int main()
+{
+inti=10,j= 20; float result; result=i/j;
+printf("%0.2f\n",result);//	0.00
+result =(float)i/j; printf("%0.2f\n", result);// 0.5
+}
+
+RELATIONAL OPERATORS
+• Relational	operators	are	used	to	find	the	relationship between two operands.
+
+• The output of relational expression is either true (1) or false (0).
+• For example,
+a>b //If a is greater than b, then a>b returns 1 else a>b returns 0.
+• The 2 operands may be constants, variables or expressions.
+There are 6 relational operators: Operator	Meaning of Operator	Example
+> Greaterthan7>4	returns true (1)
+<	Lessthan7<4	returns false (0)
+>=	Greater than or equal
+
+to 7>=4
+<=	Less than or equal to7<=4
+
+returns true (1)
+
+return false (0)
+
+
+== Equal to7==4returns false (0)! = Not equal to7! =4returns true (1)
+
+• For ex:
+Condition Return values
+8> 7	1 (or true)
+8<7	0 (or false)
+8+7<15	0 (or false)
+• Example: Program to illustrate the use of all relational operators. #include<stdio.h> int main ()
+{
+printf("7>4 : %d \n", 7>4); printf("7>=4 : %d \n", 7>=4); printf("7<4 : %d
+\n", 7<4); printf("7<=4 :
+%d \n", 7<=4);
+printf("7==4 : %d \n", 7==4); printf("7!=4 : %d ", 7!=4); return 1;
+
+}
+
+Output:
+7>4: 1
+7>=4: 1
+7<4: 0
+7<=4 :0
+7==4 :0
+7! =4: 1
+
+LOGICAL OPERATORS
+
+• These	operators	are	used	to	perform	logical operations like negation, conjunction and disjunction. The output of
+logical expression is either true (1) or false (0).
+• There are 3 logical operators:
+Operator Meaning with Examples
+&& Logical AND If c=3 and d=1 then ((c==3) && (d>2)) returns false.
+|| Logical OR If c=3 and d=1 then ((c==3) || (d>3)) returns true.
+! Logical NOT If c=3 then! (c==3) returns false.
+
+• All non- zero values (i.e. any value >0 or < 0) will be treated as true, while zero value (i.e. 0) will be treated as false.
+Truth table
+ABA&&BA||B!A00001010111001011110
+
+• Example: Program to illustrate the use of all logical operators. #include<stdio.h>
+int main()
+{
+printf("5 && 0 : %d \n", 5 &&0); printf("5 || 0 : %d \n", 5 || 0);
+printf(" !0 : %d", !0);
+return 1;
+
+}
+Output:
+5 &&0 : 0
+5 || 0 : 1
+!0 : 1
+
+• Example: Program to illustrate the use of both relational &Logical operators. #include<stdio.h>
+int main()
+{
+printf("7>5 && 5< 8 : %d \n", 7>5 &&5<8);
+printf(" 7<5 || 5!=5 : % d \n", 7<5 || 5!=5);
+
+printf("!(3 ==3) : %d ", !(3==3));
+return 1;
+}
+Output:
+7>5 && 5<8 :1
+7<5 || 5!=5 :0
+!(3 ==3) : 0
+
+Equality Operators ( == != )
+int	main ()
+{
+int
+a=20,b=1
+0; int result ; if (a== 20) printf("Yes a is
+20\n"); if (b!=20) printf("Yes b is not 20\n");
+}
+
+TERNARY OPERATOR (CONDITIONAL OPERATOR)
+• The conditional operator is also called a ternary operator it has three parts.
+• Conditional operators are used for decision making in C.
+• The syntax is shown below:
+(exp1)? exp2: exp3;
+
+where exp1 is an expression evaluated to true or false; If exp1 is evaluated to true, exp2 is executed; Ifexp1 is evaluated to false, exp3 is executed.
+Example: Program	to	find	biggest	of 2	numbers	using	conditional	operator. #include<stdio.h
+> int main()
+{
+int a,b, big ;
+printf("Enter	two	different
+numbers:\n"); scanf("%d%d",
+
+&a, &b); big=(a>b)? a :b;
+printf(" Biggest number is % d ", big); return 1;
+}
+Output:
+Enter two different numbers: 88 79 Biggest number is 88
+
+Example: Program	to	find	biggest	of 3	numbers	using	conditional
+
+operator. #include<stdio.h>
+int main()
+{
+int a,b,c big ;
+printf("Enter	two	different
+            numbers:\n"); scanf("%d%d%d", &a,	&b,	&c); big=(a>b)?((a>c)?:a:c) : (b>c)? b:c; printf(" Biggest of three number is
+%d", big); return 1;
+}
+Output:
+Enter two different numbers: 88 99 Biggest number is 99
+
+ASSIGNMENT OPERATOR
+• The most common assignment operator is=.
+• This operator assigns the value in right side to the left side.
+• The syntax is shown below:
+variable=expression;
+• Forex:
+c=5; //5 is assigned to c
+b=c; //value of c is assigned to b 5=c; // Error! 5 is a constant.
+• The operators such as +=, *= are called shorthand assignment operators.
+• Forex,
+a=a+10: can be written as a+=10;
+
+• In the same way, we have:
+Operator Example
+
+a- = a-=b a=a-b a*= b c*=b a=a*b a/= a/=b a=a/b
+a%=b a%=b a=a%b
+
+NOTE:
+int i= 2, j = 3; i *= j + 6 ; i
+= i * (j + 6);
+
+Compact Assignments
+= Direct assignment
++=	Assignment by sum
+-=	Assignment by difference
+*=	Assignment by product
+/=	Assignment by quotient
+%=	Assignment by remainder
+<<=	Assignment by bitwise left shift
+>>=	Assignment by bitwise right shift &=	Assignment by bitwise AND
+^=	Assignment by bitwise XOR
+|=	Assignment by bitwise OR
+
+
+OperatorExampleSame as=a = ba = b+=a += ba = a+b-=a -= ba = a-b*=a *= ba = a*b/=a /= ba = a/b%=a %= ba = a%b
+BITWISE OPERATORS
+• These operators are used to perform logical operation (and, or, not) on individual bits of a binary number.
+• There are 6 bitwise operators:
+Operators	Meaning of operators
+
+&	Bitwise AND
+|	Bitwise OR
+^	Bitwise exclusive OR
+~	Bitwise complement
+<<	Shift left
+>>	Shift right
+Truth Table
+ABA&
+BA|BA^B~A000001010111100110111100
+Ex: for ~ (bitwise complement) a = 12 = 00001100
+~a= 11110011
+
+Ex: for & (bitwise AND) a= 12 = 00001100
+b= 15 = 00001111 a & b
+= 00001100
+
+Ex: for | (bitwise OR) a= 12 = 00001100
+b= 15 = 00001111 a | b
+= 00001111
+
+Ex: for ^ (bitwise XOR) a= 12 = 00001100
+b= 15 = 00001111 a ^ b
+= 00000011
+
+
+• The operator that is used to shift the data by a specified number of bit positions towards left or right is called shift operator.
+
+• The syntax is shown below for <<
+b=a << num, where a is value to be shifted and num is number of bits to be shifted.
+• The syntax is shown below for >>
+b=a >> num, where a is value to be shifted and num is number of bits to be shifted.
+Ex: for <<(left shift):
+a = 13 #after binary conversion- 0000 1101
+b = a<<1
+After 1 bit shift to the left, the answer in binary is 0001 1010 Ex: for >>(right shift):
+a = 13 #after binary conversion- 0000 1101
+b = a<<1
+After 1 bit shift to the left, the answer in binary is 0000 0110
+
+
+
+Size of int = 4 bytes Size of float = 4 bytes Size of double
+= 8 bytes Size of char
+= 1 byte Size of char in bits= 8
+Comma Operator:
+The comma operator (represented by the token ,) is a binary operator that evaluates its first operand and discards the result, it then evaluates the second operand and returns the value (and type). The comma operator has the lowest precedence of any C operator.
+intx,	y;
+x=(10,20,30);
+printf("x=%d",x)
+; x=33, y=22;
+printf("\nValue: %d\n",(x,(y+10)));
+Output: x=30
+Value: 22
+
+ASCII (American Standard Code for Information Interchange)
+• Unique to each Programming Language
+• Characters are represented as 0s and1s i.e. in binary numbers
+• Each character is mapped to a number
+• Different mapping schemes exist like Extended Binary Coded Decimal Interchange Code(EBCDIC, ASCII)
+• Uppercase Characters are from 'A' (65) to'Z' (90 )
+• Lowercase from 'a' (97) to 'z' (122)
+• Digits '0' (48) to '9' (57)
+• Example AB is stored as 6566 inconsecutive memory locations
+// C program to print ASCII Value of Character int main()
+{
+char c = 'A';
+printf("The ASCII value of %c is%d", c, c);
+}
+Output
+The ASCII value of A is 65
+
+
+
+
+For example, the ASCII value of 'A' is 65 What this means is that, if you assign 'A' to a character variable, 65 is stored in the variable rather than 'A' itself
+
+
+Branching Statement:
+Statement in C is any instruction written as code that is executable and is terminated by a semicolon.
+
+Branching statement is one that alters the flow of theprogram based upon the outcome of the condition evaluated. There are various types of branching statements.
+? Decision making
+? Looping
+? Unconditional branching
+Decision making:
+There are about five different types of decision-making statements:
+• if -statement -also called simple if
+• if-else statement
+• nested if-statement
+• else-if ladder
+• switch
+statement The flow diagram is shown below:
+1. if -statement:
+
+
+
+The conditional expression/expression is evaluated to true or false. If the expression is evaluated to true, then statement1 is executed. If the expression is evaluated to false, then statement1 is skipped.
+
+
+GeneralSyntax:
+
+
+if( condition)
+{	//Execute this block if conditions True Executable Statement(s);
+
+}
+Statement Below if;
+
+Conditional expression: any expression that involves the operands and operators such as >, <,>=, <=, = etc.
+
+Statement-1: is any executable statement of C program.
+Statement-x: is any executable statement of C program that is always executed and is in the flow of the program.
+
+
+Ex.
+
+
+int x=10,y=-7, z=0; if( x > y )
+     z=x+y +100; printf("The value of z is %d",z);
+
+In the above program the conditional expression is x>y, when it's evaluates to a true value it executes the statement z=x+y+100; i.e the value of z becomes 103. However, the printf statement is always executed irrespective of the statements above it.
+
+
+
+2. if -else statement:
+
+
+
+
+The conditional expression/expression is evaluated to true or false. If the expression is evaluated to true, then statement1 is executed. If the expression is evaluated to false, then statement2 is executed.
+
+General Syntax:	if( condition)
+{	//Execute this block if conditions True Executable Statement(s);
+
+}
+else
+{
+
+
+}
+
+
+
+
+//Execute this block if condition is False Executable Statement(s);
+
+
+Statement Below if;
+
+
+Ex.
+
+
+int x=10;
+if( x%2 !=0)
+printf("%d is odd number", x);
+
+else
+printf("%d is even number", x);
+
+In the above program the conditional expression x%2 !=0 is evaluated by dividing the value of x by 2 and then remainder is checked, if the remainder is not a zero value it results into true value, then it executes the printf statement by display the message that "10 is odd number" other wise it displays the message "10 is even number".
+
+3. else-if ladder:
+else-if ladder is a set of cascaded if-else statements written one following another.
+
+Flow Diagram:
+
+
+GeneralSyntax:	if( condition-1)
+            Statement(s); else if( condition-2)
+             Statement(s); else if( condition-3)
+Statement(s);
+
+
+:
+:
+else if( condition-n)
+
+else
+
+
+
+
+Statement(s)-n;
+
+default-Statement(s); Statement Below if;
+
+4. THE switch STATEMENT
+
+• This is basically a "multi-way" decision statement.
+• This is used when we must choose among many alternatives.
+
+General Form:
+
+switch(Expression)
+{
+case value-1: Statement-1;
+.
+.
+Statement-M; break;
+case value-2: Statement-1;
+.
+.
+Statement-M; break;
+case value-N: statement-1;
+.
+.
+Statement-M; break;default: } statement-1;
+.
+.
+Statement-M;
+The syntax & flow diagram is shown below:
+
+
+
+
+
+• Here, choice can be either any integer value or a character.
+• Based on this integer value, the control is transferred to a particular case- value where necessary statements are executed.
+• During execution, if break statement is encountered, then the control comes out of the switch block.
+• If the value of the choice does not match with any of the case values (i.e. value1, value2, value3,....valueN) then control goes to default label.
+• All case-values must be different.
+• Example: Program to illustrate the use of switch statement.
+/* Program to check the typed character is vowel or not
+*/ void main()
+{
+char letter; // local variable definition printf("Type any capital letter between A to Z:
+\n"); scanf("%c",&letter);
+
+switch(grade)
+{
+case'A':printf("You typed a vowel.\n"); break;
+case'E':printf("You typed a
+vowel.\n"); break;
+case'I':printf("You typed a
+vowel.\n"); break;
+case'O':printf("You typed a vowel.\n"); break;
+case'U':printf("You typed a vowel.\n"); break;
+default: printf("You typed a consonant.\n"");break; return 0; 
+}
+
+goto and labels
+
+#include<stdio.h
+> void main()
+{	int x;
+char resp;
+next: printf("\nEnter a Number:"); scanf("%d", &x);
+if(x <0)
+{	printf("\nEnter only positive numbers.\n");
+goto next;
+}
+printf("The square root of %d is
+%f.\n",x,sqrt(x)); printf("Would you like to continue[Y/N]:"); scanf("%c",&resp); if(resp=='Y' )
+goto next; printf("\nExiting the program.");
+}
+
+Output:
+Enter a Number:-7
+Enter only positive numbers. Enter a Number:225 The square root of 225 is15.000000.
+Would you like to continue[Y/N]:N Exiting the program.
+
+BASIC CONCEPT OF LOOP
+• Let's consider a situation when you want to write a message "Welcome to C language" several times.
+Here is a simple C program to print a statement five times:
+
+#include<stdio.h
+> void main()
+{
+printf( " Welcome to C \n"); printf( " Welcome to C \n"); printf( " Welcome to C \n"); printf( " Welcome to C \n"); printf( " Welcome to C \n");
+}
+Output:
+Welcome to C Welcome to C Welcome to C Welcome to C Welcome to C
+
+• When the above program is executed, it produces the above result, but let's consider another situation when the same message needs to be printed thousand times.
+• It is certainly not feasible to write printf() statement thousand times.
+• C language provides a concept called loop, which helps in executing one or more statements up to desired number of times.
+
+
+
+
+
+
+• Loops are used to execute one or more statements repeatedly. There are three kinds of loops in C programming:
+1) for loop
+2) while loop
+3) do while loop
+THE for LOOP
+• A for loop statement can be used to execute a set of statements repeatedly as long as a given condition is true.
+• The syntax is shown below:
+for( initialization; condition; modification )
+{
+Block of statement(s);
+}
+• Firstly, initialization is done by assigning the first value to a variable & is executed only once.
+• Then, condition is evaluated to true or false.
+• If condition evaluates to false, the control comes out of the loop without executing the body of the loop.
+• If condition evaluates to true, the body of the loop (i.e. Block of statement/statements) are executed.
+• After executing the body of the loop, modification part is evaluated.
+• Then again condition is checked for true or false. This cycle continues until expression condition becomes false.
+
+• The flow diagram is shown below:
+
+
+Example: Program to display a message five times using for statement.
+
+#include<stdio.h
+> void main()
+{
+int i; for(i=1;i<=5;i+
++
+)
+{
+printf("Welcome to C language \n");
+}
+
+}
+Output:
+Welcome to C language Welcome to C language Welcome to C language Welcome to C language Welcome to C language
+
+
+
+
+
+while LOOP
+• A while loop statement can be used to execute a set of statements repeatedly as long as a given condition is true.
+
+• The syntax is shown below:
+while(conditional expression)
+{
+/* Block-statement(s); */
+/* Modify the loop control variable; */
+}
+
+• Firstly, the conditional expression is evaluated to true or false.
+• If the conditional expression evaluates to false, the control comes out of the loop without executing the body of the loop.
+• If the expression evaluates to true, the body of the loop (i.e. block- statement(s)) areexecuted.
+
+• After executing the body of the loop, control goes back to the beginning of the while statement and condition is checked again for true or false. This cycle continues until expression becomes false.
+• The flow diagram is shown below:
+
+
+Example: Program to display a message five times using while statement.
+#include<stdio.h> void main()
+{
+int i=1;
+
+while(i<=5)
+{
+printf("Welcome to C language
+\n"); i=i+1;
+}
+}
+
+Output:
+Welcome to C language Welcome to C language Welcome to C language Welcome to C language Welcome to C language
+
+
+
+
+THE do while STATEMENT
+• do-while statement is used when we do not know exactly how many times a set of statements have to be executed repeatedly.
+
+• The syntax is shown below:
+
+do
+{
+/* Block-statement(s); */
+/* Modify the loop control variable; */
+}while(conditional expression);
+
+• Firstly, the body of the loop is executed. i.e. the body of the loop is executed at least once.
+• Then, the conditional expression is evaluated to true or false.
+• If the expression evaluates to true, the body of the loop (i.e. block of statement/ statements) are executed.
+• After executing the body of the loop, the expression is again evaluated to true or false. This cycle continues until conditional expression becomes false.
+• The flow diagram is shown below:
+
+
+
+
+
+Example: Program to display a message five times using do while statement. #include<stdio.h>
+void main()
+{
+inti=1;
+do
+{
+printf("Welcome to C language
+\n"); i=i+1;
+}while(i<=5);
+}
+
+Output:
+Welcome to C language Welcome to C language Welcome to C language Welcome to C language Welcome to C language
+Differences between while and do-while loop
+
+
+Whiledo-whileEntry controlled loopExit controlled loopBody of the loop is executed zero or more timesBody of the loop is executed at least onetimeCondition is first checked and then body of the loop is executedfirstbodyoftheloopisexecuted and checks the conditionNo semicolon at the end of the while constructSemicolon at theend of the while construct
+THE break STATEMENT
+• The break statement is jump statement which can be used in switch statement and loops.
+• The break statement works as shown below:
+1) If break is executed in a switch block, the control comes out of the switch block and the statement following the switch block will be executed.
+2) If break is executed in a loop, the control comes out of the loop and the statement following the loop will be executed.
+
+
+• The syntax is shown below:
+
+
+Example-1: Program to find whether integer accepted from the user is prime or not. #include<stdio.h>
+void main()
+{	int i=1, num; printf("Type an integer:"); scanf("%d",&nu m);
+for(i=2; i <10; i ++)
+{
+
+
+
+
+
+
+}
+if(i>=n)
+
+if(nu m%i
+==0)
+break
+;
+
+printf("%d is a prime number",num);
+}
+
+
+THE continue STATEMENT
+• During execution of a loop, it may be necessary to skip apart of the loop based on some condition.
+In such cases, we use continue statement.
+• The continue statement is used only in the loop to terminate the current iteration.
+• The syntax is shown below:
+
+
+Example: Program to read and add only positive numbers using continue statement.
+
+#include<stdio.h
+> void main()
+{	int i=1, num, sum=0;
+
+for(i=0; i <5; i ++)
+{
+printf(" Enter aninteger:"); scanf( "%d", &num); if(num
+< 0)
+{
+printf("you have entered a negative number \n");
+continue ; // skip the remaining part of loop
+}
+sum=sum+num;
+}
+printf("The sum of the Positive Integers Entered = %d", sum);
+}
+
+Output:
+Enter an integer: 5 Enter an integer:11 Enter an integer: - 33
+You have entered a negative number Enter an integer:100 Enter an integer:-99
+You have entered a negative number The sum of the positive integers entered = 116
+
+Nested Loops
+
+• Loops can be placed inside other loops
+• The break/continue statement applies to the innermost enclosing while or for statement
+
+Syntax:
+The syntax for a nested for loop statement in C is as follows - for (initialization; condition; increment ) {
+
+for (initialization; condition; increment )
+{ statement(s);
+}
+statement(s);
+}
+
+
+PROGRAM 1: Print Numbers from 1 to N
+// Use of for loop #include
+<stdio.h>
+
+int main()
+{
+int i = 1; int N;
+
+printf("Enter the value of the Last Term \n")
+; scanf("%d", &N);
+
+for ( i = 1 ; i <= N ; i++) // Show difference of < and <= printf ("%d \n", i);
+
+
+return 0;
+}
+
+
+PROGRAM 2: Sum of Natural Numbers from 1 to Numbers
+// Use of for loop #include
+<stdio.h>
+
+int main()
+{
+int i = 1
+; int	;
+int sum = 0 ; // Important to Initialise to ZERO
+
+printf("Enter the value of the Last Term \n")
+; scanf("%d", &N);
+
+for ( i = 1 ; i <= N ; i++) // Show difference of < and <= sum = sum + i ;
+
+printf("Sum of series from 1 to %d is %d \n",N, sum);
+
+
+return 0;
+}
+
+PROGRAM 3: Sum of First N Odd Number Terms FOR LOOP example #include <stdio.h>
+
+int main()
+{
+int i = 1 ; int sum = 0 ; int N
+;
+int count = 0	;
+
+printf("Enter the number of ODD terms you wish to find Sum for\n"); scanf("%d", &N);
+
+for ( i = 1 ; count < N ; count++)	// Why count is less than N not <= ?
+{
+sum = sum + i ; i = i + 2
+;
+} // For clarity written here
+
+printf ("Sum of the first %d Odd Number Series is %d\n", N, sum);
+
+return 0;
+}
+
+PROGRAM 4: Factorial of a Number WHILE LOOP
+#include
+<stdio.h> int main ()
+{
+int num ; long fact = 1;
+
+printf("Enter a Number \n"); scanf("%d", &num);
+
+while ( num > 1 )
+{
+fact = fact * num
+; num = num - 1
+;
+}
+
+printf("Factorial is %ld \n", fact);
+}
+
+
+PROGRAM 5: Sum of Series while Term greater than 0.001 WHILE LOOP
+// Sum of Series S = 1 + 1 / 3 + 1 /5 + 1/ 7... 1/N
+#include
+<stdio.h> int main ()
+{
+int i = 1 ; float sum =
+0.0 ; float term = 1.0 ;
+
+while (term > 0.001)
+{
+sum = sum + term ; i = i + 2 ; term = 1.0/i ;
+}
+
+printf("Sum of Series is %6.2f \n", sum);
+}
