@@ -2,7 +2,6 @@
 #define TRIE_H
 
 #include <string>
-#include <vector>
 #include <unordered_map>
 #include "../Common/Common.h"
 
@@ -23,7 +22,7 @@ class Trie {
 private:
     TrieNode* root;
 
-    void collectSuggestions(TrieNode* node, std::vector<Suggestion>& results, int limit);
+    void collectSuggestions(TrieNode* node, Suggestion results[], int& count, int limit);
     void clearNode(TrieNode* node);
 
 public:
@@ -31,7 +30,10 @@ public:
     \~Trie();
 
     void insert(const std::string& word, int freq = 1);
-    std::vector<Suggestion> getSuggestions(const std::string& prefix, int limit = 5);
+
+    // Returns number of suggestions found (maximum = limit)
+    int getSuggestions(const std::string& prefix, Suggestion results[], int limit = 5);
+
     bool search(const std::string& word);
     bool startsWith(const std::string& prefix);
     void clear();
