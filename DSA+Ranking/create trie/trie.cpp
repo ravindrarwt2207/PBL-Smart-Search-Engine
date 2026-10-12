@@ -75,23 +75,24 @@ bool Trie::startsWith(const std::string& prefix) {
     return true;
 }
 
-void Trie::collectSuggestions(TrieNode* node, std::vector<Suggestion>& results, int limit) {
-    if (node == nullptr || results.size() >= static_cast<size_t>(limit)) return;
+void Trie::collectSuggestions(TrieNode* node, Suggestion results[], int& count, int limit) {
+    if (node == nullptr || count >= limit) return;
 
     if (node->isEndOfWord) {
-        results.push_back(Suggestion(node->word, node->frequency));
+        results[count] = Suggestion(node->word, node->frequency);
+        count++;
     }
 
     for (auto& pair : node->children) {
-        if (results.size() >= static_cast<size_t>(limit)) break;
-        collectSuggestions(pair.second, results, limit);
+        if (count >= limit) break;
+        collectSuggestions(pair.second, results, count, limit);
     }
 }
 
-std::vector<Suggestion> Trie::getSuggestions(const std::string& prefix, int limit) {
-    std::vector<Suggestion> results;
+int Trie::getSuggestions(const std::string& prefix, Suggestion results[], int limit) {
+    int count = 0;
 
-    if (prefix.empty() || limit <= 0) return results;
+    if (prefix.empty() || limit <= 0) return 0;
 
     TrieNode* current = root;
 
@@ -99,23 +100,33 @@ std::vector<Suggestion> Trie::getSuggestions(const std::string& prefix, int limi
         char lower = std::tolower(static_cast<unsigned char>(c));
 
         if (current->children.find(lower) == current->children.end()) {
-            return results;
+            return 0;
         }
         current = current->children[lower];
     }
 
-    // Collect more suggestions first, then sort
-    collectSuggestions(current, results, limit * 3);
+    // Temporary array to collect more suggestions
+    Suggestion temp[50];
+    int tempCount = 0;
 
-    // Sort by frequency (highest first)
-    std::sort(results.begin(), results.end(), [](const Suggestion& a, const Suggestion& b) {
-        return a.frequency > b.frequency;
-    });
+    collectSuggestions(current, temp, tempCount, 50);
 
-    // Keep only top 'limit' suggestions
-    if (results.size() > static_cast<size_t>(limit)) {
-        results.resize(limit);
+    // Simple sorting by frequency (descending)
+    for (int i = 0; i < tempCount - 1; i++) {
+        for (int j = i + 1; j < tempCount; j++) {
+            if (temp[j].frequency > temp[i].frequency) {
+                Suggestion t = temp[i];
+                temp[i] = temp[j];
+                temp[j] = t;
+            }
+        }
     }
 
-    return results;
+    // Copy top 'limit' results
+    count = (tempCount < limit) ? tempCount : limit;
+    for (int i = 0; i < count; i++) {
+        results[i] = temp[i];
+    }
+
+    return count;
 }
