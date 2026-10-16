@@ -1,1 +1,274 @@
+#include <iostream>
+#include <vector>
+#include <string>
 
+using namespace std;
+
+class SearchEngineUI {
+private:
+    vector<string> documents;
+    vector<string> searchHistory;
+
+    string toLowerCase(string text) {
+        for (int i = 0; i < text.length(); i++) {
+            if (text[i] >= 'A' && text[i] <= 'Z') {
+                text[i] = text[i] + 32;
+            }
+        }
+        return text;
+    }
+
+    void displayHeader() {
+        cout << "\n============================================\n";
+        cout << "       SMART AUTOCOMPLETE SEARCH ENGINE\n";
+        cout << "============================================\n";
+        cout << "               Built with C++\n";
+        cout << "============================================\n";
+    }
+
+    void displayMenu() {
+        cout << "\n--------------- MAIN MENU ------------------\n";
+        cout << "1. Search Documents\n";
+        cout << "2. View Search History\n";
+        cout << "3. View All Documents\n";
+        cout << "4. Add a Document\n";
+        cout << "5. About Project\n";
+        cout << "6. Exit\n";
+        cout << "--------------------------------------------\n";
+        cout << "Enter your choice: ";
+    }
+
+    bool startsWith(string text, string prefix) {
+        if (prefix.length() > text.length()) {
+            return false;
+        }
+
+        for (int i = 0; i < prefix.length(); i++) {
+            if (text[i] != prefix[i]) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    bool contains(string text, string keyword) {
+        if (keyword.length() > text.length()) {
+            return false;
+        }
+
+        for (int i = 0; i <= text.length() - keyword.length(); i++) {
+            int j = 0;
+
+            while (j < keyword.length() &&
+                   text[i + j] == keyword[j]) {
+                j++;
+            }
+
+            if (j == keyword.length()) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    void showSuggestions(string query) {
+        string prefix = toLowerCase(query);
+        int count = 0;
+
+        cout << "\n---------- AUTOCOMPLETE SUGGESTIONS -------\n";
+
+        for (int i = 0; i < documents.size(); i++) {
+            string title = toLowerCase(documents[i]);
+
+            if (startsWith(title, prefix)) {
+                cout << "> " << documents[i] << "\n";
+                count++;
+
+                if (count == 5) {
+                    break;
+                }
+            }
+        }
+
+        if (count == 0) {
+            cout << "No suggestions available.\n";
+        }
+
+        cout << "--------------------------------------------\n";
+    }
+
+    void performSearch() {
+        string query;
+
+        cout << "\nEnter search keyword: ";
+        getline(cin, query);
+
+        if (query.empty()) {
+            cout << "Please enter a keyword.\n";
+            return;
+        }
+
+        searchHistory.push_back(query);
+
+        string keyword = toLowerCase(query);
+        int count = 0;
+
+        showSuggestions(query);
+
+        cout << "\n-------------- SEARCH RESULTS --------------\n";
+        cout << "Search query: " << query << "\n";
+
+        for (int i = 0; i < documents.size(); i++) {
+            string title = toLowerCase(documents[i]);
+
+            if (contains(title, keyword)) {
+                count++;
+                cout << count << ". " << documents[i] << "\n";
+            }
+        }
+
+        if (count == 0) {
+            cout << "No matching documents found.\n";
+        } else {
+            cout << "\nTotal results found: " << count << "\n";
+        }
+
+        cout << "--------------------------------------------\n";
+    }
+
+    void showHistory() {
+        cout << "\n-------------- SEARCH HISTORY --------------\n";
+
+        if (searchHistory.empty()) {
+            cout << "No searches performed yet.\n";
+        } else {
+            for (int i = 0; i < searchHistory.size(); i++) {
+                cout << i + 1 << ". " << searchHistory[i] << "\n";
+            }
+        }
+
+        cout << "--------------------------------------------\n";
+    }
+
+    void showDocuments() {
+        cout << "\n--------------- ALL DOCUMENTS --------------\n";
+
+        for (int i = 0; i < documents.size(); i++) {
+            cout << i + 1 << ". " << documents[i] << "\n";
+        }
+
+        cout << "\nTotal documents: " << documents.size() << "\n";
+        cout << "--------------------------------------------\n";
+    }
+
+    void addDocument() {
+        string title;
+
+        cout << "\nEnter document title: ";
+        getline(cin, title);
+
+        if (title.empty()) {
+            cout << "Document title cannot be empty.\n";
+            return;
+        }
+
+        documents.push_back(title);
+
+        cout << "Document added successfully!\n";
+    }
+
+    void showAbout() {
+        cout << "\n--------------- ABOUT PROJECT --------------\n";
+        cout << "Project: Smart Autocomplete Search Engine\n";
+        cout << "Language: C++\n";
+        cout << "Concepts: Classes, Objects and Vectors\n";
+        cout << "\nFeatures:\n";
+        cout << "- Search documents using keywords\n";
+        cout << "- Display autocomplete suggestions\n";
+        cout << "- View search history\n";
+        cout << "- Add new documents\n";
+        cout << "- View all available documents\n";
+        cout << "--------------------------------------------\n";
+    }
+
+public:
+    SearchEngineUI() {
+        documents.push_back("Data Structures");
+        documents.push_back("Data Structures and Algorithms");
+        documents.push_back("Data Structures in C++");
+        documents.push_back("Introduction to Programming");
+        documents.push_back("Object Oriented Programming");
+        documents.push_back("C++ Programming Tutorial");
+        documents.push_back("Database Management Systems");
+        documents.push_back("Operating Systems");
+        documents.push_back("Computer Networks");
+        documents.push_back("Artificial Intelligence");
+        documents.push_back("Machine Learning");
+        documents.push_back("Web Development");
+    }
+
+    void run() {
+        int choice;
+
+        while (true) {
+            displayHeader();
+            displayMenu();
+
+            if (!(cin >> choice)) {
+                cout << "Invalid input. Please enter a number.\n";
+                cin.clear();
+
+                char ch;
+                while (cin.get(ch) && ch != '\n') {
+                }
+
+                continue;
+            }
+
+            char ch;
+            while (cin.get(ch) && ch != '\n') {
+            }
+
+            switch (choice) {
+                case 1:
+                    performSearch();
+                    break;
+
+                case 2:
+                    showHistory();
+                    break;
+
+                case 3:
+                    showDocuments();
+                    break;
+
+                case 4:
+                    addDocument();
+                    break;
+
+                case 5:
+                    showAbout();
+                    break;
+
+                case 6:
+                    cout << "\nThank you for using Smart Search Engine!\n";
+                    return;
+
+                default:
+                    cout << "Invalid choice. Please select 1-6.\n";
+            }
+
+            cout << "\nPress Enter to continue...";
+            cin.get();
+        }
+    }
+};
+
+int main() {
+    SearchEngineUI app;
+    app.run();
+
+    return 0;
+}
