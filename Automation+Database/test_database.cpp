@@ -1,16 +1,14 @@
-// test_database.cpp - ONLY for testing my module. Not part of the final project.
-// Usage: ./test_database file1.txt file2.txt ...
 #include <iostream>
 #include "DatabaseAutomation.h"
 using namespace std;
 
 int main(int argc, char *argv[]) {
-    DatabaseAutomation dbAuto;           // uses smartsearch.db
+    DatabaseAutomation dbAuto;        
     if (!dbAuto.isConnected())
         return 1;
 
     for (int i = 1; i < argc; i++)
-        dbAuto.addTask(argv[i]);         // queue the files
+        dbAuto.addTask(argv[i]);        
 
     cout << "Saved " << dbAuto.processTasks() << " file(s).\n";
 
