@@ -1,0 +1,16 @@
+
+# Compiled Windows executables
+*.exe
+
+# Object files
+*.o
+*.obj
+
+# Debug and build folders
+build/
+debug/
+
+# Editor settings
+.vscode/
+*.exe
+.vscode/
