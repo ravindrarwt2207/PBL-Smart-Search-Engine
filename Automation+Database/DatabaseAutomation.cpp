@@ -1,4 +1,3 @@
-// DatabaseAutomation.cpp
 #include "DatabaseAutomation.h"
 #include "sqlite3.h"
 #include <iostream>
@@ -9,7 +8,7 @@ DatabaseAutomation::DatabaseAutomation(const string &dbName) {
     db = nullptr;
     if (sqlite3_open(dbName.c_str(), &db) != SQLITE_OK) {
         cout << "Database connection failed: " << sqlite3_errmsg(db) << endl;
-        sqlite3_close(db);   // safe even if db is not fully opened
+        sqlite3_close(db);
         db = nullptr;
         return;
     }
@@ -54,13 +53,13 @@ void DatabaseAutomation::addTask(const string &filename) {
 int DatabaseAutomation::processTasks() {
     int savedCount = 0;
     while (!taskQueue.empty()) {
-        Task task = taskQueue.front();   // oldest task first (FIFO)
+        Task task = taskQueue.front();  
         taskQueue.pop();
 
         string content;
         if (!readFile(task.filename, content)) {
             cout << "Could not open file: " << task.filename << endl;
-            continue;                    // skip this file, go to the next task
+            continue;           
         }
         if (saveDocument(task.filename, content))
             savedCount++;
@@ -78,8 +77,6 @@ bool DatabaseAutomation::readFile(const string &filename, string &content) {
         content += line + " ";
     return true;
 }
-
-// ---------- Database ----------
 
 bool DatabaseAutomation::saveDocument(const string &filename, const string &content) {
     if (db == nullptr)
@@ -115,7 +112,7 @@ vector<Document> DatabaseAutomation::getAllDocuments() {
     while (sqlite3_step(statement) == SQLITE_ROW) {
         Document doc;
         doc.id = sqlite3_column_int(statement, 0);
-        // column_text can return nullptr for NULL values, so check first
+
         const unsigned char *name = sqlite3_column_text(statement, 1);
         const unsigned char *text = sqlite3_column_text(statement, 2);
         doc.filename = name ? reinterpret_cast<const char *>(name) : "";
