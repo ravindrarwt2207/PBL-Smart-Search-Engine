@@ -31,7 +31,6 @@ public:
 
     void insert(const std::string& word, int freq = 1);
 
-    // Returns number of suggestions found (maximum = limit)
     int getSuggestions(const std::string& prefix, Suggestion results[], int limit = 5);
 
     bool search(const std::string& word);
