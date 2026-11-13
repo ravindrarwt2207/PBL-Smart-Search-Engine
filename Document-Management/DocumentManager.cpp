@@ -9,10 +9,6 @@
 
 namespace fs = std::filesystem;
 
-// ---------------------------------------------------------------------------
-// Small parsing helpers (file-scope static = internal linkage)
-// ---------------------------------------------------------------------------
-
 static bool parseInt(const std::string &text, int &value) {
     std::istringstream iss(text);
     if (!(iss >> value)) {
@@ -20,7 +16,7 @@ static bool parseInt(const std::string &text, int &value) {
     }
     char extra;
     if (iss >> extra) {
-        return false;   // trailing non-whitespace junk
+        return false; 
     }
     return true;
 }
@@ -37,19 +33,11 @@ static bool parseLongLong(const std::string &text, long long &value) {
     return true;
 }
 
-// ---------------------------------------------------------------------------
-// Constructor
-// ---------------------------------------------------------------------------
-
 DocumentManager::DocumentManager()
     : nextId(1),
       storageFile("document_catalogue.dat"),
       managedFolder("managed_documents") {
 }
-
-// ---------------------------------------------------------------------------
-// initialize: create folder, load catalogue, rebuild queue
-// ---------------------------------------------------------------------------
 
 bool DocumentManager::initialize(std::string &message) {
     documents.clear();
@@ -66,7 +54,7 @@ bool DocumentManager::initialize(std::string &message) {
         return false;
     }
 
-    // Recovery: if main catalogue is missing but a .tmp exists, restore it.
+
     std::string tempFile = storageFile + ".tmp";
     std::error_code recoverEc;
     bool storageExists = fs::exists(storageFile, recoverEc);
@@ -93,7 +81,6 @@ bool DocumentManager::initialize(std::string &message) {
     std::string line;
     int expectedCount = 0;
 
-    // Read NEXTID
     if (!std::getline(in, line) ||
         line.rfind("NEXTID ", 0) != 0 ||
         !parseInt(line.substr(7), nextId) ||
@@ -101,7 +88,7 @@ bool DocumentManager::initialize(std::string &message) {
         corrupt = true;
     }
 
-    // Read COUNT
+
     if (!corrupt) {
         if (!std::getline(in, line) ||
             line.rfind("COUNT ", 0) != 0 ||
@@ -111,7 +98,7 @@ bool DocumentManager::initialize(std::string &message) {
         }
     }
 
-    // Read each document record
+ 
     if (!corrupt) {
         for (int i = 0; i < expectedCount; ++i) {
             int id = 0;
@@ -165,7 +152,6 @@ bool DocumentManager::initialize(std::string &message) {
                 }
             }
 
-            // We wrote a newline after content, then "END".
             std::string dummy;
             std::getline(in, dummy);
 
@@ -187,12 +173,12 @@ bool DocumentManager::initialize(std::string &message) {
     in.close();
 
     if (corrupt || static_cast<int>(documents.size()) != expectedCount) {
-        // Back up corrupt file; do not delete it.
+
         std::error_code backupEc;
         std::string backupName = storageFile + ".corrupt";
 
         std::error_code removeEc;
-        fs::remove(backupName, removeEc); // remove old backup if any
+        fs::remove(backupName, removeEc);
 
         fs::rename(storageFile, backupName, backupEc);
 
@@ -210,9 +196,6 @@ bool DocumentManager::initialize(std::string &message) {
     return true;
 }
 
-// ---------------------------------------------------------------------------
-// importDocument
-// ---------------------------------------------------------------------------
 
 bool DocumentManager::importDocument(const std::string &sourcePath,
                                      int &newId,
@@ -232,7 +215,7 @@ bool DocumentManager::importDocument(const std::string &sourcePath,
         return false;
     }
 
-    // Check extension case-insensitively
+
     std::string ext = source.extension().string();
     for (char &c : ext) {
         c = static_cast<char>(std::tolower(static_cast<unsigned char>(c)));
@@ -279,7 +262,7 @@ bool DocumentManager::importDocument(const std::string &sourcePath,
         return false;
     }
 
-    // Choose an ID that does not overwrite an existing managed file.
+   
     int id = nextId;
     while (true) {
         std::string path = managedPathForId(id);
@@ -321,20 +304,18 @@ bool DocumentManager::importDocument(const std::string &sourcePath,
 
     documents.push_back(doc);
     pendingStatus.push_back(true);
-
-    // Keep nextId advanced even if saving fails. This prevents ID reuse.
     nextId = id + 1;
 
     std::string saveMessage;
     if (!saveCatalogue(saveMessage)) {
-        // Roll back in-memory document and managed file.
+  
         documents.pop_back();
         pendingStatus.pop_back();
 
         std::error_code removeEc;
         fs::remove(finalPath, removeEc);
 
-        // nextId remains advanced on purpose.
+
         message = "Import failed while saving catalogue: " + saveMessage;
         return false;
     }
@@ -345,9 +326,6 @@ bool DocumentManager::importDocument(const std::string &sourcePath,
     return true;
 }
 
-// ---------------------------------------------------------------------------
-// listDocuments
-// ---------------------------------------------------------------------------
 
 void DocumentManager::listDocuments() const {
     if (documents.empty()) {
@@ -370,9 +348,7 @@ void DocumentManager::listDocuments() const {
     }
 }
 
-// ---------------------------------------------------------------------------
-// getDocument
-// ---------------------------------------------------------------------------
+
 
 bool DocumentManager::getDocument(int id, Document &outDocument) const {
     for (const Document &doc : documents) {
@@ -384,9 +360,6 @@ bool DocumentManager::getDocument(int id, Document &outDocument) const {
     return false;
 }
 
-// ---------------------------------------------------------------------------
-// Queue helpers
-// ---------------------------------------------------------------------------
 
 bool DocumentManager::getNextPendingId(int &id) const {
     if (pendingQueue.empty()) {
@@ -444,14 +417,10 @@ std::size_t DocumentManager::documentCount() const {
     return documents.size();
 }
 
-// ---------------------------------------------------------------------------
-// Private helpers
-// ---------------------------------------------------------------------------
 
 bool DocumentManager::saveCatalogue(std::string &message) {
     std::string tempFile = storageFile + ".tmp";
 
-    // Remove any stale temp file before writing fresh.
     std::error_code preRemoveEc;
     fs::remove(tempFile, preRemoveEc);
 
@@ -497,7 +466,6 @@ bool DocumentManager::saveCatalogue(std::string &message) {
         return false;
     }
 
-    // Replace old catalogue. Windows rename does not overwrite, so remove first.
     std::error_code ec;
     if (fs::exists(storageFile, ec)) {
         std::error_code removeEc;
@@ -524,7 +492,6 @@ void DocumentManager::rebuildQueue() {
         pendingQueue.pop();
     }
 
-    // documents are stored in import order, so this keeps FIFO order.
     for (std::size_t i = 0; i < documents.size(); ++i) {
         if (pendingStatus[i]) {
             pendingQueue.push(documents[i].id);
