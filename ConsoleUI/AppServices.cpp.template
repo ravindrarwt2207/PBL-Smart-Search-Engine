@@ -1,0 +1,48 @@
+// ============================================================================
+// AppServices.cpp.template  -  ADAPTER TEMPLATE (NOT a working implementation)
+//
+// Copy this file to AppServices.cpp and replace every TODO with a call to the
+// teammate's REAL class. The UI is already finished; only this adapter is
+// missing until Piyush, Dewang and Ravinder share their headers.
+// Aszad's code does NOT include their headers - only this file does.
+// ============================================================================
+#include "AppServices.h"
+
+// TODO: #include "DocumentManager.h"   // Piyush
+// TODO: #include "SearchEngine.h"      // Dewang
+// TODO: #include "Autocomplete.h"      // Ravinder
+
+namespace AppServices {
+
+bool importDocument(const std::string& filePath, std::string& message) {
+    // TODO (Piyush): call DocumentManager's import function, fill 'message'.
+    (void)filePath; message = "TODO: connect DocumentManager"; return false;
+}
+
+int processPendingIndexing() {
+    // TODO (Piyush/Dewang): process the indexing queue, return how many were indexed.
+    return 0;
+}
+
+std::vector<DocumentInfo> listDocuments() {
+    // TODO (Piyush): convert his document list into DocumentInfo{id, title}.
+    return {};
+}
+
+bool getDocumentById(int id, Document& outDocument) {
+    // TODO (Piyush): look up by id, copy id/title/content into outDocument.
+    (void)id; (void)outDocument; return false;
+}
+
+std::vector<SearchResult> searchDocuments(const std::string& query) {
+    // TODO (Dewang): call SearchEngine, convert to SearchResult, best first.
+    (void)query; return {};
+}
+
+std::vector<std::string> getAutocompleteSuggestions(const std::string& prefix,
+                                                    std::size_t maxSuggestions) {
+    // TODO (Ravinder): call the Trie, return at most maxSuggestions words.
+    (void)prefix; (void)maxSuggestions; return {};
+}
+
+}  // namespace AppServices
