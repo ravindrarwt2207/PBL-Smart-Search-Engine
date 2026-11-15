@@ -3,45 +3,31 @@
 #include <string>
 #include <vector>
 #include <queue>
+#include<iostream>
 #include "model.h"
+using namespace std;
 class DocumentManager {
 public:
     DocumentManager();
-
-    bool initialize(std::string &message);
-
-
-    bool importDocument(const std::string &sourcePath,
-                        int &newId,
-                        std::string &message);
-
-
+    bool initialize(string &message);
+    bool importDocument(const string &sourcePath,int &newId,string &message);
     void listDocuments() const;
-
-
     bool getDocument(int id, Document &outDocument) const;
-
-
     bool getNextPendingId(int &id) const;
-
-
     bool getNextPendingDocument(Document &outDocument) const;
-
-    bool markIndexed(int id, std::string &message);
-
-    std::size_t pendingCount() const;
-    std::size_t documentCount() const;
-
+    bool markIndexed(int id, string &message);
+  size_t pendingCount() const;
+    size_t documentCount() const;
 private:
-    std::vector<Document> documents;      
-    std::vector<bool> pendingStatus;      
-    std::queue<int> pendingQueue;         
-    int nextId;                            
-    std::string storageFile;              
-    std::string managedFolder;             
+    vector<Document> documents;      
+   vector<bool> pendingStatus;      
+    queue<int> pendingQueue;          
+    int nextId;                          
+    string storageFile;               
+    string managedFolder;             
 
-    bool saveCatalogue(std::string &message);
+    bool saveCatalogue(string &message);
     void rebuildQueue();
-    bool isDuplicateContent(const std::string &content) const;
-    std::string managedPathForId(int id) const;
+    bool isDuplicateContent(const string &content) const;
+    string managedPathForId(int id) const;
 };
