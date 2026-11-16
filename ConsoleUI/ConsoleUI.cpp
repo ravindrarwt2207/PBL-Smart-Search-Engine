@@ -1,6 +1,4 @@
-// ============================================================================
-// ConsoleUI.cpp  -  Implementation of the console interface (Aszad)
-// ============================================================================
+
 #include "ConsoleUI.h"
 
 #include <algorithm>
@@ -13,22 +11,17 @@
 namespace {
 const int kLineWidth = 60;
 }
-
-// ---------------------------------------------------------------------------
-// Constructor and main loop
-// ---------------------------------------------------------------------------
 ConsoleUI::ConsoleUI() : history_("search_history.txt"), inputEnded_(false), running_(true) {}
 
 void ConsoleUI::run() {
-    history_.load();  // load previous searches automatically at start-up
-
+    history_.load();
     while (running_) {
         try {
             showHeader();
             showMainMenu();
 
             int choice = readInt("Enter your choice: ", 1, 6);
-            if (choice == -1) {  // input closed: leave safely
+            if (choice == -1) {
                 exitScreen();
                 break;
             }
@@ -42,7 +35,6 @@ void ConsoleUI::run() {
                 case 6: exitScreen();              break;
             }
         } catch (const std::exception& error) {
-            // Last safety net: a problem in any module must not crash the UI.
             std::cout << "\n[ERROR] Something went wrong: " << error.what() << "\n";
             waitForEnter();
         } catch (...) {
@@ -52,9 +44,6 @@ void ConsoleUI::run() {
     }
 }
 
-// ---------------------------------------------------------------------------
-// Drawing helpers
-// ---------------------------------------------------------------------------
 void ConsoleUI::printLine(char symbol, int width) {
     std::cout << std::string(static_cast<std::size_t>(width), symbol) << "\n";
 }
@@ -83,10 +72,6 @@ void ConsoleUI::showMainMenu() const {
               << "  5. Project Information\n"
               << "  6. Exit\n\n";
 }
-
-// ---------------------------------------------------------------------------
-// Input helpers
-// ---------------------------------------------------------------------------
 bool ConsoleUI::readLine(std::string& line) {
     if (!std::getline(std::cin, line)) {
         inputEnded_ = true;
@@ -96,7 +81,6 @@ bool ConsoleUI::readLine(std::string& line) {
     return true;
 }
 
-// Keeps asking until the user types a whole number between min and max.
 int ConsoleUI::readInt(const std::string& prompt, int min, int max) {
     while (true) {
         std::cout << prompt;
@@ -133,9 +117,6 @@ void ConsoleUI::waitForEnter() {
     readLine(ignored);
 }
 
-// ---------------------------------------------------------------------------
-// Text helpers
-// ---------------------------------------------------------------------------
 std::string ConsoleUI::trim(const std::string& text) {
     std::size_t start = 0;
     while (start < text.size() && std::isspace(static_cast<unsigned char>(text[start]))) ++start;
@@ -144,7 +125,6 @@ std::string ConsoleUI::trim(const std::string& text) {
     return text.substr(start, end - start);
 }
 
-// Removes surrounding "quotes" (Windows "Copy as path" adds them).
 std::string ConsoleUI::stripQuotes(const std::string& text) {
     std::string result = trim(text);
     if (result.size() >= 2 && ((result.front() == '"' && result.back() == '"') ||
@@ -171,7 +151,6 @@ std::string ConsoleUI::shorten(const std::string& text, std::size_t maxLength) {
     return text.substr(0, maxLength - 3) + "...";
 }
 
-// Short one-line preview: line breaks and repeated spaces become single spaces.
 std::string ConsoleUI::makePreview(const std::string& text, std::size_t maxLength) {
     std::string flat;
     bool lastWasSpace = true;  // also removes leading spaces
@@ -188,7 +167,6 @@ std::string ConsoleUI::makePreview(const std::string& text, std::size_t maxLengt
     return shorten(flat, maxLength);
 }
 
-// The word currently being typed = the last word of the query.
 std::string ConsoleUI::lastWord(const std::string& query) {
     std::string q = trim(query);
     std::size_t pos = q.find_last_of(" \t");
@@ -201,10 +179,6 @@ std::string ConsoleUI::replaceLastWord(const std::string& query, const std::stri
     if (pos == std::string::npos) return word;
     return q.substr(0, pos + 1) + word;
 }
-
-// ---------------------------------------------------------------------------
-// 1. Add New Document
-// ---------------------------------------------------------------------------
 void ConsoleUI::addDocumentScreen() {
     printTitle("ADD NEW DOCUMENT");
     std::cout << "Enter the full path of a .txt file (or press Enter to go back).\n"
@@ -246,9 +220,6 @@ void ConsoleUI::addDocumentScreen() {
     waitForEnter();
 }
 
-// ---------------------------------------------------------------------------
-// 2. View All Documents
-// ---------------------------------------------------------------------------
 void ConsoleUI::viewAllDocumentsScreen() {
     printTitle("ALL DOCUMENTS");
 
@@ -270,11 +241,6 @@ void ConsoleUI::viewAllDocumentsScreen() {
     waitForEnter();
 }
 
-// ---------------------------------------------------------------------------
-// 3. Search Documents
-// ---------------------------------------------------------------------------
-// Asks for a query, then shows up to 5 autocomplete suggestions for the last
-// word. The user may pick one to replace that word, or press Enter to keep it.
 std::string ConsoleUI::askForQueryWithAutocomplete() {
     std::cout << "Enter your search query (single or multiple words).\n"
               << "Search: ";
@@ -333,7 +299,6 @@ void ConsoleUI::searchScreen() {
 
     std::vector<AppServices::SearchResult> results = AppServices::searchDocuments(query);
 
-    // Every real search is saved in the history.
     history_.addEntry(query, static_cast<int>(results.size()));
 
     if (results.empty()) {
@@ -359,7 +324,7 @@ void ConsoleUI::showResults(const std::string& query,
 
             std::string preview = r.preview;
             if (trim(preview).empty()) {
-                // The search module gave no preview, so build one from the document.
+
                 AppServices::Document doc;
                 if (AppServices::getDocumentById(r.docId, doc)) preview = doc.content;
             }
@@ -402,9 +367,6 @@ void ConsoleUI::openDocument(int docId) {
     waitForEnter();
 }
 
-// ---------------------------------------------------------------------------
-// 4. View Search History
-// ---------------------------------------------------------------------------
 void ConsoleUI::historyScreen() {
     printTitle("SEARCH HISTORY");
 
@@ -437,9 +399,6 @@ void ConsoleUI::historyScreen() {
     }
 }
 
-// ---------------------------------------------------------------------------
-// 5. Project Information
-// ---------------------------------------------------------------------------
 void ConsoleUI::projectInfoScreen() const {
     printTitle("PROJECT INFORMATION");
     std::cout << "  Project Name        : Smart Autocomplete & Search Engine\n"
@@ -455,9 +414,6 @@ void ConsoleUI::projectInfoScreen() const {
     std::getline(std::cin, ignored);
 }
 
-// ---------------------------------------------------------------------------
-// 6. Exit
-// ---------------------------------------------------------------------------
 void ConsoleUI::exitScreen() {
     printTitle("EXIT");
     if (history_.save()) {
