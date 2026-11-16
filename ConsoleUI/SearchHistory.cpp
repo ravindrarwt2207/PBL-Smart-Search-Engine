@@ -1,10 +1,4 @@
-// ============================================================================
-// SearchHistory.cpp  -  Implementation of SearchHistory (Aszad)
-//
-// File format (one search per line):
-//     2026-11-15 16:50:12|3|machine learning
-//     timestamp          |count|query   (query is last, so it may contain '|')
-// ============================================================================
+
 #include "SearchHistory.h"
 
 #include <ctime>
@@ -13,9 +7,6 @@
 
 SearchHistory::SearchHistory(const std::string& fileName) : fileName_(fileName) {}
 
-// ---------------------------------------------------------------------------
-// Helpers
-// ---------------------------------------------------------------------------
 std::string SearchHistory::currentTimestamp() {
     std::time_t now = std::time(nullptr);
     std::tm     localTime{};
@@ -31,7 +22,6 @@ std::string SearchHistory::currentTimestamp() {
     return buffer;
 }
 
-// Remove line breaks so one search always stays on one line of the file.
 std::string SearchHistory::cleanText(const std::string& text) {
     std::string result = text;
     for (char& c : result) {
@@ -40,20 +30,17 @@ std::string SearchHistory::cleanText(const std::string& text) {
     return result;
 }
 
-// ---------------------------------------------------------------------------
-// Public functions
-// ---------------------------------------------------------------------------
 bool SearchHistory::load() {
     entries_.clear();
 
     std::ifstream file(fileName_);
     if (!file.is_open()) {
-        return false;  // first run: no history file yet. This is normal.
+        return false; 
     }
 
     std::string line;
     while (std::getline(file, line)) {
-        if (!line.empty() && line.back() == '\r') line.pop_back();  // Windows files
+        if (!line.empty() && line.back() == '\r') line.pop_back(); 
 
         std::size_t firstBar = line.find('|');
         if (firstBar == std::string::npos) continue;
@@ -67,7 +54,7 @@ bool SearchHistory::load() {
             entry.resultCount =
                 std::stoi(line.substr(firstBar + 1, secondBar - firstBar - 1));
         } catch (const std::exception&) {
-            continue;  // damaged line: skip it instead of crashing
+            continue;  
         }
         if (entry.query.empty()) continue;
         entries_.push_back(entry);
