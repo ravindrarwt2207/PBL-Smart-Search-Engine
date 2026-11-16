@@ -5,17 +5,12 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
-# Aszad's files + the team's files.
-# Add Dewang's, Ravinder's and Piyush's .cpp files, and the AppServices.cpp
-# that connects everything, to this list.
 add_executable(SmartSearch
     main.cpp
     ConsoleUI.cpp
     SearchHistory.cpp
     AppServices.cpp
-    # DocumentManager.cpp
-    # SearchEngine.cpp
-    # Autocomplete.cpp
+
 )
 
 if(MSVC)
