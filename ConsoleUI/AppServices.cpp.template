@@ -13,12 +13,11 @@ std::vector<DocumentInfo> listDocuments() {
 }
 
 bool getDocumentById(int id, Document& outDocument) {
-    // TODO (Piyush): look up by id, copy id/title/content into outDocument.
+
     (void)id; (void)outDocument; return false;
 }
 
 std::vector<SearchResult> searchDocuments(const std::string& query) {
-    // TODO (Dewang): call SearchEngine, convert to SearchResult, best first.
     (void)query; return {};
 }
 
